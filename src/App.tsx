@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Theme } from "./styles/theme";
 import Header from "./components/Header";
 import Cover from "./components/Cover";
+import Skills from "./components/Skills";
 
 // const Background = styled.div`
 //   background-color: ${({ theme }) => theme.colors.background};
@@ -12,16 +13,11 @@ import Cover from "./components/Cover";
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  const refHeader = React.useRef(null);
-
-  // const test = refHeader.current.getBoundingClientRect().height;
-
-  console.log(refHeader);
-
   return (
     <Theme>
       <Header />
       <Cover />
+      <Skills />
     </Theme>
   );
 };
