@@ -4,5 +4,6 @@ export interface ITheme {
     background: string;
     backgroundTwo: string;
     border: string;
+    lightGrey: string;
   };
 }

@@ -5,6 +5,7 @@ import { Theme } from "./styles/theme";
 import Header from "./components/Header";
 import Cover from "./components/Cover";
 import Skills from "./components/Skills";
+import Education from "./components/Education";
 
 // const Background = styled.div`
 //   background-color: ${({ theme }) => theme.colors.background};
@@ -18,6 +19,7 @@ const App: React.FC<AppProps> = () => {
       <Header />
       <Cover />
       <Skills />
+      <Education />
     </Theme>
   );
 };

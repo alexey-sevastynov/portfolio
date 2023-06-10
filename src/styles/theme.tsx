@@ -9,6 +9,7 @@ const theme: ITheme = {
     background: "#26365F",
     backgroundTwo: "#568ED5",
     border: "white",
+    lightGrey: "#BEBEBE",
   },
 };
 
@@ -18,6 +19,7 @@ const brigthTheme: ITheme = {
     background: "white",
     backgroundTwo: "#568ED5",
     border: "black",
+    lightGrey: "#BEBEBE",
   },
 };
 
