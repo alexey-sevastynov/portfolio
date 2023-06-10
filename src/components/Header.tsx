@@ -37,13 +37,11 @@ const NavMenu = styled.nav`
 `;
 
 const NavMenuMob = styled.div`
-  & svg {
-    display: none;
-    height: 50px;
+  display: none;
+  height: 50px;
 
-    @media (max-width: 900px) {
-      display: block;
-    }
+  @media (max-width: 900px) {
+    display: block;
   }
 `;
 
@@ -125,130 +123,132 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   return (
-    <StyledHeader>
-      <Logo>{"<Alexey Sevastynov />"}</Logo>
+    <div>
+      <StyledHeader>
+        <Logo>{"<Alexey Sevastynov />"}</Logo>
 
-      <NavMenu>
-        <ul>
-          <li>Skills</li>
-          <li>Education</li>
-          <li>Work Experiences</li>
-          <li>My Projects</li>
-          <li>Contact me</li>
-          <Language>
-            EN
-            <LanguagePopup>
-              <p>EN</p>
-              <p>EN</p>
-              <p>RU</p>
-            </LanguagePopup>
-            <svg
-              width="14"
-              height="11"
-              viewBox="0 0 14 11"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 11L0.937823 0.499999L13.0622 0.5L7 11Z"
-                fill="#BEBEBE"
-              />
-            </svg>
-          </Language>
-          <ToggleMode>
-            <span>
+        <NavMenu>
+          <ul>
+            <li>Skills</li>
+            <li>Education</li>
+            <li>Work Experiences</li>
+            <li>My Projects</li>
+            <li>Contact me</li>
+            <Language>
+              EN
+              <LanguagePopup>
+                <p>EN</p>
+                <p>EN</p>
+                <p>RU</p>
+              </LanguagePopup>
               <svg
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="11" cy="11" r="5" fill="#FFA800" />
-                <path
-                  d="M11 4V1"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M6.12134 6.12131L4.00002 3.99999"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M16.0208 6.12131L18.1421 3.99999"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M11 21V18"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M18.1421 18.1421L16.0208 16.0208"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M4 18.1421L6.12132 16.0208"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M18 10.5H21"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M1 11H4"
-                  stroke="#FFA800"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>
-            <span>
-              <svg
-                width="16"
-                height="19"
-                viewBox="0 0 16 19"
+                width="14"
+                height="11"
+                viewBox="0 0 14 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M16 18C-4.49992 23.5 -2.49999 0.5 10.0001 0C8.0001 3 5.90017 7.3 7.5001 8.5C9.10004 9.7 10.1667 10.3333 10.5001 10.5L8.0001 11C8.0001 12.5 10.3999 15.2 16 18Z"
-                  fill="#FFA800"
+                  d="M7 11L0.937823 0.499999L13.0622 0.5L7 11Z"
+                  fill="#BEBEBE"
                 />
-                <circle cx="5" cy="7" r="1" fill="black" />
-                <path d="M9 13C8.5 13.5 7 14.2 5 13" stroke="black" />
               </svg>
-            </span>
-          </ToggleMode>
-        </ul>
-      </NavMenu>
+            </Language>
+            <ToggleMode>
+              <span>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="11" cy="11" r="5" fill="#FFA800" />
+                  <path
+                    d="M11 4V1"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M6.12134 6.12131L4.00002 3.99999"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M16.0208 6.12131L18.1421 3.99999"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M11 21V18"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M18.1421 18.1421L16.0208 16.0208"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M4 18.1421L6.12132 16.0208"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M18 10.5H21"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M1 11H4"
+                    stroke="#FFA800"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  width="16"
+                  height="19"
+                  viewBox="0 0 16 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 18C-4.49992 23.5 -2.49999 0.5 10.0001 0C8.0001 3 5.90017 7.3 7.5001 8.5C9.10004 9.7 10.1667 10.3333 10.5001 10.5L8.0001 11C8.0001 12.5 10.3999 15.2 16 18Z"
+                    fill="#FFA800"
+                  />
+                  <circle cx="5" cy="7" r="1" fill="black" />
+                  <path d="M9 13C8.5 13.5 7 14.2 5 13" stroke="black" />
+                </svg>
+              </span>
+            </ToggleMode>
+          </ul>
+        </NavMenu>
 
-      <NavMenuMob>
-        <svg
-          width="24"
-          height="18"
-          viewBox="0 0 24 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line y1="1" x2="24" y2="1" stroke="white" stroke-width="2" />
-          <line y1="9" x2="24" y2="9" stroke="white" stroke-width="2" />
-          <line y1="17" x2="24" y2="17" stroke="white" stroke-width="2" />
-        </svg>
-      </NavMenuMob>
-    </StyledHeader>
+        <NavMenuMob>
+          <svg
+            width="24"
+            height="18"
+            viewBox="0 0 24 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line y1="1" x2="24" y2="1" stroke="white" strokeWidth="2" />
+            <line y1="9" x2="24" y2="9" stroke="white" strokeWidth="2" />
+            <line y1="17" x2="24" y2="17" stroke="white" strokeWidth="2" />
+          </svg>
+        </NavMenuMob>
+      </StyledHeader>
+    </div>
   );
 };
 
