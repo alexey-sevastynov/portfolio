@@ -25,7 +25,7 @@ const brigthTheme: ITheme = {
 
 const GlobalStyle = createGlobalStyle`
 body{
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     background-color: ${
       currentTheme ? theme.colors.background : brigthTheme.colors.background
     };
