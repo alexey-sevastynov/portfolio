@@ -7,6 +7,7 @@ import Cover from "./components/Cover";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Experiences from "./components/Experiences";
+import Projects from "./components/Projects";
 
 // const Background = styled.div`
 //   background-color: ${({ theme }) => theme.colors.background};
@@ -22,6 +23,7 @@ const App: React.FC<AppProps> = () => {
       <Skills />
       <Education />
       <Experiences />
+      <Projects />
     </Theme>
   );
 };
