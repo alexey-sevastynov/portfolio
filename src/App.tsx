@@ -9,6 +9,7 @@ import Education from "./components/Education";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import MenuMobile from "./components/MenuMobile";
 
 // const Background = styled.div`
 //   background-color: ${({ theme }) => theme.colors.background};
@@ -20,6 +21,7 @@ const App: React.FC<AppProps> = () => {
   return (
     <Theme>
       <Header />
+      {/* <MenuMobile /> */}
       <Cover />
       <Skills />
       <Education />

@@ -5,11 +5,9 @@ import { education } from "../assets/education";
 
 const StyledEducation = styled.div`
   height: 100vh;
-
-  & h2 {
-    margin-top: 65px;
-    margin-bottom: 40px;
-    font-size: 48px;
+  width: 100%;
+  @media (max-width: 1050px) {
+    height: unset;
   }
 `;
 

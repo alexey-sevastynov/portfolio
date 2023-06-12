@@ -8,20 +8,34 @@ const StyledEducationItem = styled.div`
     margin-right: 35px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.34);
     border-radius: 100%;
+    @media (max-width: 1050px) {
+      margin-right: 0px;
+    }
+    @media (max-width: 1050px) {
+      height: 70px;
+      width: 70px;
+      margin-bottom: 10px;
+    }
   }
 
   & h3 {
     margin-bottom: 6px;
     font-size: 24px;
     font-weight: 700;
+    @media (max-width: 1050px) {
+      text-align: center;
+    }
   }
 
   & p {
-    font-size: 20px;
     margin-bottom: 6px;
     &:nth-child(1) {
       margin-bottom: 6px;
       color: yellow;
+    }
+
+    @media (max-width: 1050px) {
+      text-align: center;
     }
   }
 
@@ -43,11 +57,12 @@ const Item = styled.div`
       }
     }
   }
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
-
-const Col1 = styled.div``;
-
-const Col2 = styled.div``;
 
 const Line = styled.div`
   margin: 20px 0px 35px 0px;
@@ -72,14 +87,14 @@ const EducationItem: React.FC<EducationItemProps> = ({
   return (
     <StyledEducationItem>
       <Item>
-        <Col1>
+        <div>
           <img src={image} alt="img" />
-        </Col1>
-        <Col2>
+        </div>
+        <div>
           <h3>{title}</h3>
           <p>{subTitle}</p>
           <p>{text}</p>
-        </Col2>
+        </div>
       </Item>
 
       <Line id="line"></Line>

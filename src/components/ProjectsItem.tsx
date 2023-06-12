@@ -25,7 +25,7 @@ const Header = styled.div`
   display: flex;
   margin-bottom: 17px;
 
-  & h4 {
+  & p {
     margin-left: 11px;
   }
 `;
@@ -127,9 +127,9 @@ const ProjectsItem: React.FC<ProjectsItemProps> = ({
             />
           </svg>
 
-          <h4>{title}</h4>
+          <p>{title}</p>
         </Header>
-        <p>{text}</p>
+        <h6>{text}</h6>
       </div>
 
       <Footer>

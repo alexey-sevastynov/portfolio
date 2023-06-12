@@ -26,6 +26,18 @@ const StyledSkillsIcons = styled.div`
     &:not(:first-child, :last-child) {
       margin: 0px 20px;
     }
+
+    @media (max-width: 600px) {
+      &:first-child {
+        margin-right: 5px;
+      }
+      &:last-child {
+        margin-left: 5px;
+      }
+      &:not(:first-child, :last-child) {
+        margin: 0px 5px;
+      }
+    }
   }
 `;
 

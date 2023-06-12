@@ -8,19 +8,28 @@ import Button from "./Button";
 const StyledProjects = styled.div`
   height: 100vh;
 
-  & h2 {
+  @media (max-width: 1400px) {
+    height: unset;
+  }
+
+  /* & h2 {
     margin-top: 65px;
     margin-bottom: 40px;
     font-size: 48px;
-  }
+  } */
 `;
 
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  column-gap: 10px;
 
   row-gap: 25px;
+
+  @media (max-width: 960px) {
+    justify-content: center;
+  }
 `;
 
 const ButtonBlock = styled.div`

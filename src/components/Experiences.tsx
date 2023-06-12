@@ -6,15 +6,25 @@ import { experiences } from "../assets/experiences";
 const StyledExperiences = styled.div`
   height: 100vh;
 
-  & h2 {
+  @media (max-width: 1050px) {
+    height: unset;
+  }
+
+  /* & h2 {
     margin-top: 65px;
     margin-bottom: 40px;
     font-size: 48px;
-  }
+  } */
 `;
 
 const Flex = styled.div`
   display: flex;
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+  }
 `;
 
 type ExperiencesProps = {};

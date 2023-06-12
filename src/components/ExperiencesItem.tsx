@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledExperiencesItem = styled.div`
   height: 540px;
-  width: 436px;
+  max-width: 436px;
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
   border-radius: 25px;
 
@@ -12,26 +12,41 @@ const StyledExperiencesItem = styled.div`
     font-size: 24px;
     display: block;
     text-align: center;
+    @media (max-width: 600px) {
+      padding: 35px 0px 13px 0px;
+    }
   }
 
   & p {
-    font-size: 20px;
     text-align: center;
 
     &:last-child {
       margin-top: 35px;
+      @media (max-width: 600px) {
+        padding: 0px 5px;
+      }
     }
   }
 
   &:not(:last-child) {
     margin-right: 31px;
   }
+
+  @media (max-width: 1050px) {
+    &:not(:last-child) {
+      margin-right: 0px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: 400px;
+  }
 `;
 
 const HederBlock = styled.div`
   position: relative;
   height: 177px;
-  width: 100%;
+  max-width: 436px;
   background-color: aliceblue;
   border-radius: 25px 25px 0px 0px;
   background: linear-gradient(
@@ -39,11 +54,16 @@ const HederBlock = styled.div`
     ${(props) => props.nonce}
   );
 
-  & h3 {
-    font-size: 36px;
-    font-weight: 700;
+  & h4 {
     text-align: center;
     padding-top: 59px;
+    @media (max-width: 600px) {
+      padding-top: 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: 130px;
   }
 `;
 
@@ -52,6 +72,14 @@ const Icon = styled.div`
   bottom: -35%;
   left: 50%;
   transform: translateX(-50%);
+  @media (max-width: 600px) {
+    bottom: -27%;
+
+    & svg {
+      width: 70px;
+      height: 70px;
+    }
+  }
 `;
 
 interface ExperiencesItemProps {
@@ -74,7 +102,7 @@ const ExperiencesItem: React.FC<ExperiencesItemProps> = ({
   return (
     <StyledExperiencesItem>
       <HederBlock color={color.color_1} nonce={color.color_2}>
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <Icon>{image}</Icon>
       </HederBlock>
 

@@ -7,11 +7,20 @@ import AnimationMain from "./AnimationMain";
 const StyledCover = styled.div`
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 50px - 10px); // 50px(header), 10px(padding body)
+  height: calc(100vh - 10px); // 50px(header), 10px(padding body)
   width: calc(100% - 20px);
 
   @media (max-width: 1262px) {
-    height: calc(100vh - 100px - 10px); // 100px(header), 10px(padding body)
+    height: calc(100vh - 100px); // 100px(header), 10px(padding body)
+  }
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    height: unset;
+  }
+
+  @media (max-width: 1050px) {
+    width: 100%;
   }
 `;
 
@@ -20,17 +29,32 @@ const Col1 = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+  @media (max-width: 1050px) {
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    align-items: center;
+    padding-left: 0px;
+    width: 100%;
+  }
 `;
 
 const Col2 = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   width: 50%;
   position: relative;
+  @media (max-width: 1050px) {
+    padding-top: 50px;
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    padding-top: 0px;
+    width: 100%;
+  }
 
   & svg {
     position: absolute;
-
     bottom: 0px;
     right: 50%;
     transform: translateX(50%);
@@ -38,19 +62,26 @@ const Col2 = styled.div`
     @media (max-width: 1261px) {
       height: 400px;
     }
+    @media (max-width: 1050px) {
+      position: static;
+      bottom: unset;
+      right: unset;
+      transform: unset;
+    }
+    @media (max-width: 600px) {
+      max-height: 400px;
+      max-width: 400px;
+    }
   }
 `;
 
 const Title = styled.div`
   display: flex;
+  align-items: center;
   margin-top: 100px;
-
-  & h1 {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
+  @media (max-width: 600px) {
+    margin-top: 40px;
   }
-
   & svg {
     margin-left: 30px;
   }
@@ -63,6 +94,15 @@ const SubTitle = styled.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 40px;
+
+  @media (max-width: 1200px) {
+    font-size: 18px;
+  }
+  @media (max-width: 600px) {
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+  }
 `;
 
 const BlockBtns = styled.div`

@@ -1,10 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledAnimationTable = styled.svg``;
 
 type AnimationTableProps = {};
 
 const AnimationTable: React.FC<AnimationTableProps> = () => {
   return (
-    <svg
+    <StyledAnimationTable
       width="680"
       height="487"
       viewBox="0 0 680 487"
@@ -317,7 +320,7 @@ const AnimationTable: React.FC<AnimationTableProps> = () => {
           />
         </filter>
       </defs>
-    </svg>
+    </StyledAnimationTable>
   );
 };
 

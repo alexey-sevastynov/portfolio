@@ -4,12 +4,11 @@ import SocialIcons from "./SocialIcons";
 
 const StyledContact = styled.div`
   height: 100vh;
-
   position: relative;
-
-  & h2 {
-    padding-top: 85px;
-    font-size: 48px;
+  width: 100%;
+  @media (max-width: 900px) {
+    /* position: static; */
+    /* height: unset; */
   }
 `;
 const Location = styled.div`
@@ -20,9 +19,9 @@ const Location = styled.div`
   & img {
     margin-right: 18px;
   }
-
-  & p {
-    font-size: 20px;
+  @media (max-width: 600px) {
+    justify-content: center;
+    margin-top: 50px;
   }
 `;
 
@@ -30,13 +29,13 @@ const Phone = styled.div`
   margin-bottom: 30px;
   display: flex;
   align-items: center;
-
   & img {
     margin-right: 18px;
   }
-
-  & p {
-    font-size: 20px;
+  @media (max-width: 600px) {
+    margin-bottom: 0px;
+    margin-top: 30px;
+    justify-content: center;
   }
 `;
 
@@ -44,6 +43,38 @@ const Foto = styled.div`
   position: absolute;
   bottom: 10px;
   right: 0;
+  @media (max-width: 900px) {
+    display: flex;
+    justify-content: center;
+    position: static;
+    bottom: unset;
+    right: unset;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0px 10px;
+    & img {
+      max-width: 440px;
+      max-height: 440px;
+    }
+  }
+  @media (max-width: 500px) {
+    & img {
+      max-width: 340px;
+      max-height: 340px;
+    }
+  }
+`;
+
+const CenterMob = styled.div`
+  @media (max-width: 600px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-bottom: 40px;
+    bottom: 0;
+  }
 `;
 
 interface ContactProps {}
@@ -58,17 +89,19 @@ const Contact: React.FC<ContactProps> = () => {
         {/* <img src="image/location" alt="location" /> */}
         <p>Dnipro, Ukraine</p>
       </Location>
+
+      <Foto>
+        <img src="image/foto.png" alt="foto" width={550} height={550} />
+      </Foto>
+
       <Phone>
         <img src="image/phoneNight.png" alt="phone" />
         {/* <img src="image/phone.png" alt="phone" /> */}
         <p>+38 097 421 19 29</p>
       </Phone>
-
-      <SocialIcons />
-
-      <Foto>
-        <img src="image/foto.png" alt="foto" width={550} height={550} />
-      </Foto>
+      <CenterMob>
+        <SocialIcons />
+      </CenterMob>
     </StyledContact>
   );
 };

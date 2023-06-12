@@ -1,10 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledAnimationMain = styled.svg``;
 
 type AnimationMainProps = {};
 
 const AnimationMain: React.FC<AnimationMainProps> = () => {
   return (
-    <svg
+    <StyledAnimationMain
       width="562"
       height="516"
       viewBox="0 0 562 516"
@@ -109,7 +112,7 @@ const AnimationMain: React.FC<AnimationMainProps> = () => {
         d="M309.302 152.843C305.83 155.013 301.23 160.915 310.604 167.165M310.604 163.91C312.991 163.693 320.369 163.259 327.531 170.42C334.041 171.722 338.598 162.608 349.014 163.91C352.269 163.476 357.217 160.655 350.967 152.843"
         stroke="black"
       />
-    </svg>
+    </StyledAnimationMain>
   );
 };
 
