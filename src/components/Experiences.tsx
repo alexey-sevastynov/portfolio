@@ -27,18 +27,22 @@ const Flex = styled.div`
   }
 `;
 
-type ExperiencesProps = {};
+type ExperiencesProps = {
+  refExperiences: React.LegacyRef<HTMLDivElement>;
+};
 
-const Experiences: React.FC<ExperiencesProps> = () => {
+const Experiences: React.FC<ExperiencesProps> = ({ refExperiences }) => {
   return (
-    <StyledExperiences>
-      <h2>Experiences</h2>
-      <Flex>
-        {experiences.map((item, id) => (
-          <ExperiencesItem key={id} {...item} />
-        ))}
-      </Flex>
-    </StyledExperiences>
+    <div ref={refExperiences}>
+      <StyledExperiences>
+        <h2>Experiences</h2>
+        <Flex>
+          {experiences.map((item, id) => (
+            <ExperiencesItem key={id} {...item} />
+          ))}
+        </Flex>
+      </StyledExperiences>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SocialIcons from "./SocialIcons";
 import Button from "./Button";
 import AnimationMain from "./AnimationMain";
+import { motion } from "framer-motion";
 
 const StyledCover = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const StyledCover = styled.div`
   width: calc(100% - 20px);
 
   @media (max-width: 1262px) {
-    height: calc(100vh - 100px); // 100px(header), 10px(padding body)
+    height: calc(100vh - 65px); // 100px(header), 10px(padding body)
   }
 
   @media (max-width: 1050px) {
@@ -60,7 +61,7 @@ const Col2 = styled.div`
     transform: translateX(50%);
 
     @media (max-width: 1261px) {
-      height: 400px;
+      /* max-width: 100%; */
     }
     @media (max-width: 1050px) {
       position: static;
@@ -115,15 +116,35 @@ const BlockBtns = styled.div`
   }
 `;
 
-type CoverProps = {};
+type CoverProps = {
+  refContact: any;
+};
 
-const Cover: React.FC<CoverProps> = () => {
+const Cover: React.FC<CoverProps> = ({ refContact }) => {
+  const buttonHandler = (ref: any) => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
   return (
     <StyledCover>
       <Col1>
         <Title>
           <h1>Hi all, I'm Alexey</h1>
-          <svg
+          <motion.svg
+            //@ts-ignore
+            animate={{
+              rotate: [0, 15, -15, 15, 0, 0, 0, 0, 0, 0, 0, 0],
+              // transform: [
+              //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
+              //   "matrix(1,-0.34,0.34,1,0,0)",
+              //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
+              //   "matrix(1,0.34,-0.34,1,0,0)",
+              //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
+              // ],
+              transformOrigin: "50% bottom",
+            }}
+            transition={{ repeat: Infinity, duration: 2 }}
             width="62"
             height="59"
             viewBox="0 0 62 59"
@@ -171,7 +192,7 @@ const Cover: React.FC<CoverProps> = () => {
                 <stop offset="1" stopColor="#EEA986" />
               </linearGradient>
             </defs>
-          </svg>
+          </motion.svg>
         </Title>
         <SubTitle>
           A passionate Frontend Software Developer 🚀 having an experience of
@@ -181,7 +202,10 @@ const Cover: React.FC<CoverProps> = () => {
         <SocialIcons />
 
         <BlockBtns>
-          <Button text={"CONTACT ME"} />
+          <div onClick={() => buttonHandler(refContact)}>
+            <Button text={"CONTACT ME"} />
+          </div>
+
           <Button text={" SEE MY RESUME "} />
         </BlockBtns>
       </Col1>

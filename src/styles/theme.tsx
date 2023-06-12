@@ -1,7 +1,6 @@
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { ITheme } from "../interfaces/styled";
-
-const currentTheme = 1; // 0 - brightTheme
+import { useAppSelector } from "../redux/hook";
 
 const theme: ITheme = {
   colors: {
@@ -25,18 +24,27 @@ const brigthTheme: ITheme = {
 
 const GlobalStyle = createGlobalStyle`
 body{
+  
     padding: 0px 10px 0px 10px;
-    background-color: ${
-      currentTheme ? theme.colors.background : brigthTheme.colors.background
-    };
+    background-color:   ${(props) =>
+      // @ts-ignore
+      props.suppressMultiMountWarning
+        ? brigthTheme.colors.background
+        : theme.colors.background};
     max-width: 1440px;
     margin: 0 auto;
 };
+
+
 * {
     margin: 0px;
     font-family: 'Jura', sans-serif;
     font-weight: 300;
-    color: ${currentTheme ? theme.colors.text : brigthTheme.colors.text};
+    color:  ${(props) =>
+      // @ts-ignore
+      props.suppressMultiMountWarning
+        ? brigthTheme.colors.text
+        : theme.colors.text};
 };
 
 li {
@@ -67,7 +75,7 @@ h2 {
     font-size: 48px;
     padding-top: 40px;
     padding-bottom: 30px;
-  @media (max-width: 600px) {
+    @media (max-width: 600px) {
       text-align: center;
       padding-top: 20px;
       padding-bottom: 10px;
@@ -114,9 +122,11 @@ p{
 button {
    width: 200px;
   height: 50px;
-  background-color: ${
-    currentTheme ? theme.colors.backgroundTwo : brigthTheme.colors.backgroundTwo
-  };
+  background-color:  ${(props) =>
+    // @ts-ignore
+    props.suppressMultiMountWarning
+      ? brigthTheme.colors.backgroundTwo
+      : theme.colors.backgroundTwo};
   border-radius: 10px;
   font-weight: 700;
   font-size: 20px;
@@ -125,11 +135,11 @@ button {
   cursor: pointer;
 
   &:hover {
-    border: 1px solid ${
-      currentTheme
+    border: 1px solid  ${(props) =>
+      // @ts-ignore
+      props.suppressMultiMountWarning
         ? theme.colors.backgroundTwo
-        : brigthTheme.colors.backgroundTwo
-    };
+        : brigthTheme.colors.backgroundTwo};
     background-color: unset;
 
     transform: translateY(-3px);
@@ -147,10 +157,13 @@ interface ThemeProps {
 }
 
 export const Theme: React.FC<ThemeProps> = ({ children }) => {
+  const brightTheme = useAppSelector(({ main }) => main.brigthTheme);
+
   return (
-    <ThemeProvider theme={currentTheme ? theme : brigthTheme}>
+    <ThemeProvider theme={brightTheme ? brigthTheme : theme}>
       {children}
-      <GlobalStyle />
+
+      <GlobalStyle suppressMultiMountWarning={brightTheme} />
     </ThemeProvider>
   );
 };

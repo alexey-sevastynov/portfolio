@@ -37,21 +37,25 @@ const ButtonBlock = styled.div`
   text-align: center;
 `;
 
-interface ProjectsProps {}
+interface ProjectsProps {
+  refProjects: React.LegacyRef<HTMLDivElement>;
+}
 
-const Projects: React.FC<ProjectsProps> = () => {
+const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
   return (
-    <StyledProjects>
-      <h2>My Projects</h2>
-      <Flex>
-        {projects.map((item, id) => (
-          <ProjectsItem key={id} {...item} />
-        ))}
-      </Flex>
-      <ButtonBlock>
-        <Button text="MORE PROJECTS" />
-      </ButtonBlock>
-    </StyledProjects>
+    <div ref={refProjects}>
+      <StyledProjects>
+        <h2>My Projects</h2>
+        <Flex>
+          {projects.map((item, id) => (
+            <ProjectsItem key={id} {...item} />
+          ))}
+        </Flex>
+        <ButtonBlock>
+          <Button text="MORE PROJECTS" />
+        </ButtonBlock>
+      </StyledProjects>
+    </div>
   );
 };
 

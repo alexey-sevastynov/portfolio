@@ -4,6 +4,12 @@ import LanguageBlock from "./LanguageBlock";
 import ModeBlock from "./ModeBlock";
 import useScrollDirection from "../hooks/useScrollDirection";
 import MenuMobile from "./MenuMobile";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import {
+  onBrigthTheme,
+  onOpenMenuMobile,
+  onOpenPopupLanguage,
+} from "../redux/slices/main";
 
 const StyledHeader = styled.div`
   position: sticky;
@@ -26,6 +32,7 @@ const StyledHeader = styled.div`
 `;
 
 const NavMenu = styled.nav`
+  z-index: 10;
   & ul {
     display: flex;
     align-items: center;
@@ -79,10 +86,30 @@ const MenuBlock = styled.div`
   top: 50px;
 `;
 
-interface HeaderProps {}
+interface HeaderProps {
+  refSkills: React.LegacyRef<HTMLDivElement>;
+  refEducation: React.LegacyRef<HTMLDivElement>;
+  refExperiences: React.LegacyRef<HTMLDivElement>;
+  refProjects: React.LegacyRef<HTMLDivElement>;
+  refContact: React.LegacyRef<HTMLDivElement>;
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({
+  refSkills,
+  refEducation,
+  refExperiences,
+  refProjects,
+  refContact,
+}) => {
+  const dispatch = useAppDispatch();
+  const openMenuMobile = useAppSelector((props) => props.main.openMenuMobile);
   const scrollDirection = useScrollDirection();
+
+  const buttonHandler = (ref: any) => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <StyledHeader
@@ -93,11 +120,14 @@ const Header: React.FC<HeaderProps> = () => {
 
       <NavMenu>
         <ul>
-          <li>Skills</li>
-          <li>Education</li>
-          <li>Work Experiences</li>
-          <li>My Projects</li>
-          <li>Contact me</li>
+          <li onClick={() => buttonHandler(refSkills)}>Skills</li>
+          <li onClick={() => buttonHandler(refEducation)}>Education</li>
+          <li onClick={() => buttonHandler(refExperiences)}>
+            Work Experiences
+          </li>
+          <li onClick={() => buttonHandler(refProjects)}>My Projects</li>
+          <li onClick={() => buttonHandler(refContact)}>Contact me</li>
+
           <LanguageBlock />
           <ModeBlock />
         </ul>
@@ -105,6 +135,7 @@ const Header: React.FC<HeaderProps> = () => {
 
       <NavMenuMob>
         <svg
+          onClick={() => dispatch(onOpenMenuMobile())}
           width="24"
           height="18"
           viewBox="0 0 24 18"
@@ -117,9 +148,17 @@ const Header: React.FC<HeaderProps> = () => {
         </svg>
       </NavMenuMob>
 
-      {/* <MenuBlock>
-        <MenuMobile />
-      </MenuBlock> */}
+      {openMenuMobile && (
+        <MenuBlock>
+          <MenuMobile
+            refSkills={refSkills}
+            refEducation={refEducation}
+            refExperiences={refExperiences}
+            refProjects={refProjects}
+            refContact={refContact}
+          />
+        </MenuBlock>
+      )}
     </StyledHeader>
   );
 };

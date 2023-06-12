@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { motion } from "framer-motion";
+import { onOpenPopupLanguage } from "../redux/slices/main";
 
 const StyledLanguageBlock = styled.div`
   font-weight: 700;
@@ -32,7 +35,6 @@ const LanguagePopup = styled.div`
   border-radius: 8px;
 
   & p {
-    background-color: ${({ theme }) => theme.colors.backgroundTwo};
     color: ${({ theme }) => theme.colors.border};
 
     &:nth-child(1) {
@@ -44,24 +46,44 @@ const LanguagePopup = styled.div`
 interface LanguageBlockProps {}
 
 const LanguageBlock: React.FC<LanguageBlockProps> = () => {
+  const dispatch = useAppDispatch();
+  const openPopupLanguage = useAppSelector(
+    (props) => props.main.openPopupLanguage
+  );
+
   return (
-    <StyledLanguageBlock>
-      EN
-      <LanguagePopup>
-        <p>EN</p>
-        <p>EN</p>
-        <p>RU</p>
-      </LanguagePopup>
-      <svg
-        width="14"
-        height="11"
-        viewBox="0 0 14 11"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M7 11L0.937823 0.499999L13.0622 0.5L7 11Z" fill="#BEBEBE" />
-      </svg>
-    </StyledLanguageBlock>
+    <div onClick={() => dispatch(onOpenPopupLanguage())}>
+      <StyledLanguageBlock>
+        EN
+        {openPopupLanguage && (
+          <motion.div
+            initial={{ position: "absolute", right: 7, opacity: 0 }}
+            animate={{
+              position: "absolute",
+              top: "100%",
+              right: 7,
+              opacity: 1,
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <LanguagePopup>
+              <p>EN</p>
+              <p>EN</p>
+              <p>RU</p>
+            </LanguagePopup>
+          </motion.div>
+        )}
+        <svg
+          width="14"
+          height="11"
+          viewBox="0 0 14 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M7 11L0.937823 0.499999L13.0622 0.5L7 11Z" fill="#BEBEBE" />
+        </svg>
+      </StyledLanguageBlock>
+    </div>
   );
 };
 

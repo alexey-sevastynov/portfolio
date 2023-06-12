@@ -11,23 +11,27 @@ const StyledEducation = styled.div`
   }
 `;
 
-type EducationProps = {};
+type EducationProps = {
+  refEducation: React.LegacyRef<HTMLDivElement>;
+};
 
-const Education: React.FC<EducationProps> = () => {
+const Education: React.FC<EducationProps> = ({ refEducation }) => {
   return (
-    <StyledEducation>
-      <h2>Education</h2>
+    <div ref={refEducation}>
+      <StyledEducation>
+        <h2>Education</h2>
 
-      {education.map((item) => (
-        <EducationItem
-          key={item.image}
-          image={item.image}
-          title={item.title}
-          subTitle={item.subTitle}
-          text={item.text}
-        />
-      ))}
-    </StyledEducation>
+        {education.map((item) => (
+          <EducationItem
+            key={item.image}
+            image={item.image}
+            title={item.title}
+            subTitle={item.subTitle}
+            text={item.text}
+          />
+        ))}
+      </StyledEducation>
+    </div>
   );
 };
 

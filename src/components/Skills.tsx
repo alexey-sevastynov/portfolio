@@ -70,20 +70,26 @@ const Col2 = styled.div`
   }
 `;
 
-type SkillsProps = {};
+type SkillsProps = {
+  refSkills: React.LegacyRef<HTMLDivElement>;
+};
 
-const Skills: React.FC<SkillsProps> = () => {
+const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
   return (
-    <StyledSkills>
-      <Col1>
-        <AnimationTable />
-      </Col1>
-      <Col2>
-        <h2>What I do</h2>
-        <h5>CRAZY FRONTEND DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK</h5>
-        <SkillsIcons />
-      </Col2>
-    </StyledSkills>
+    <div ref={refSkills}>
+      <StyledSkills>
+        <Col1>
+          <AnimationTable />
+        </Col1>
+        <Col2>
+          <h2>What I do</h2>
+          <h5>
+            CRAZY FRONTEND DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK
+          </h5>
+          <SkillsIcons />
+        </Col2>
+      </StyledSkills>
+    </div>
   );
 };
 

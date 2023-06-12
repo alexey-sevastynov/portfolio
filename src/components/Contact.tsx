@@ -77,32 +77,36 @@ const CenterMob = styled.div`
   }
 `;
 
-interface ContactProps {}
+interface ContactProps {
+  refContact: React.LegacyRef<HTMLDivElement>;
+}
 
-const Contact: React.FC<ContactProps> = () => {
+const Contact: React.FC<ContactProps> = ({ refContact }) => {
   return (
-    <StyledContact>
-      <h2>Reach Out to me!</h2>
+    <div ref={refContact}>
+      <StyledContact>
+        <h2>Reach Out to me!</h2>
 
-      <Location>
-        <img src="image/locationNight.png" alt="location" />
-        {/* <img src="image/location" alt="location" /> */}
-        <p>Dnipro, Ukraine</p>
-      </Location>
+        <Location>
+          <img src="image/locationNight.png" alt="location" />
+          {/* <img src="image/location" alt="location" /> */}
+          <p>Dnipro, Ukraine</p>
+        </Location>
 
-      <Foto>
-        <img src="image/foto.png" alt="foto" width={550} height={550} />
-      </Foto>
+        <Foto>
+          <img src="image/foto.png" alt="foto" width={550} height={550} />
+        </Foto>
 
-      <Phone>
-        <img src="image/phoneNight.png" alt="phone" />
-        {/* <img src="image/phone.png" alt="phone" /> */}
-        <p>+38 097 421 19 29</p>
-      </Phone>
-      <CenterMob>
-        <SocialIcons />
-      </CenterMob>
-    </StyledContact>
+        <Phone>
+          <img src="image/phoneNight.png" alt="phone" />
+          {/* <img src="image/phone.png" alt="phone" /> */}
+          <p>+38 097 421 19 29</p>
+        </Phone>
+        <CenterMob>
+          <SocialIcons />
+        </CenterMob>
+      </StyledContact>
+    </div>
   );
 };
 
