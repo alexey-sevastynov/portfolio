@@ -102,7 +102,7 @@ const AnimationTable: React.FC<AnimationTableProps> = () => {
       <path
         d="M440 227.318L173.5 163.318L145 212.818L216 400.818L440 227.318Z"
         fill="#FF6B00"
-        fill-opacity="0.15"
+        fillOpacity="0.15"
       />
       <path
         d="M205.5 229.318L215 353.318H437.5C440.333 316.651 446.2 241.218 447 232.818C447.8 224.418 443.667 222.318 441.5 222.318H212C207.2 222.718 205.667 227.151 205.5 229.318Z"
@@ -168,38 +168,38 @@ const AnimationTable: React.FC<AnimationTableProps> = () => {
       <path
         d="M554.5 359.818V362.818"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M545.5 358.318V360.318"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M549.5 359.318V362.318"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M580 362.318L581 365.318"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M576 362.318V365.318M571 362.318V365.318"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M566.5 361.318V364.318"
         stroke="#999999"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M673.5 401.818C695.5 356.618 649.333 334.318 623.5 328.818V345.318C671.1 360.918 672 387.484 666.5 398.818C664.9 407.618 670.5 404.484 673.5 401.818Z"
@@ -291,9 +291,9 @@ const AnimationTable: React.FC<AnimationTableProps> = () => {
           width="28"
           height="29"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

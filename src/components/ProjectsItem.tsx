@@ -100,8 +100,8 @@ const ProjectsItem: React.FC<ProjectsItemProps> = ({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M0 0H17V20.7185H0V0ZM3.14384 1.47989H15.8356V14.5523H3.14384V1.47989ZM15.8356 15.6622H1.63014V19.1153H15.8356V15.6622Z"
               fill="white"
             />
@@ -160,14 +160,14 @@ const ProjectsItem: React.FC<ProjectsItemProps> = ({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M10 15C15.5228 15 19.3 11.4516 20 7.36559C19.3 3.33333 15.5228 0 10 0C4.47715 0 0.65 3.17204 0 7.36559C0.9 11.7742 4.47715 15 10 15ZM9.95 12.7419C14.0645 12.7419 16.3 10.6452 17.4 7.36559C16.15 4.19355 14.0645 1.98925 9.95 1.98925C5.83548 1.98925 3.55 4.4086 2.5 7.36559C3.65 10.0538 5.83548 12.7419 9.95 12.7419Z"
               fill="#BEBEBE"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M14.2 7.36559C14.2 9.85978 12.3196 11.8817 10 11.8817C7.6804 11.8817 5.8 9.85978 5.8 7.36559C5.8 4.8714 7.6804 2.84946 10 2.84946C12.3196 2.84946 14.2 4.8714 14.2 7.36559ZM7.7 7.36559C7.7 8.73146 8.72974 9.83871 10 9.83871C11.2703 9.83871 12.3 8.73146 12.3 7.36559C12.3 5.99973 11.2703 4.89247 10 4.89247C8.72974 4.89247 7.7 5.99973 7.7 7.36559Z"
               fill="#BEBEBE"
             />
