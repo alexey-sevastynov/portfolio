@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import ProjectsItem from "./ProjectsItem";
+import ProjectsItem, { MProjectsItem } from "./ProjectsItem";
 import { projects } from "../assets/projects";
 import Button from "./Button";
 
@@ -48,7 +48,14 @@ const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
         <h2>My Projects</h2>
         <Flex>
           {projects.map((item, id) => (
-            <ProjectsItem key={id} {...item} />
+            <MProjectsItem
+              key={id}
+              {...item}
+              variants={containerAnimation}
+              initial="hidden"
+              whileInView="visible"
+              custom={id + 1}
+            />
           ))}
         </Flex>
         <ButtonBlock>
@@ -60,3 +67,12 @@ const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
 };
 
 export default Projects;
+
+const containerAnimation = {
+  hidden: { opacity: 0, y: 23 },
+  visible: (custom: any) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom * 0.4 },
+  }),
+};

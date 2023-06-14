@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ExperiencesItem from "./ExperiencesItem";
+import ExperiencesItem, { MExperiencesItem } from "./ExperiencesItem";
 import { experiences } from "../assets/experiences";
 
 const StyledExperiences = styled.div`
@@ -38,7 +38,14 @@ const Experiences: React.FC<ExperiencesProps> = ({ refExperiences }) => {
         <h2>Experiences</h2>
         <Flex>
           {experiences.map((item, id) => (
-            <ExperiencesItem key={id} {...item} />
+            <MExperiencesItem
+              key={id}
+              {...item}
+              variants={containerAnimation}
+              initial="hidden"
+              whileInView="visible"
+              custom={id + 1}
+            />
           ))}
         </Flex>
       </StyledExperiences>
@@ -47,3 +54,12 @@ const Experiences: React.FC<ExperiencesProps> = ({ refExperiences }) => {
 };
 
 export default Experiences;
+
+const containerAnimation = {
+  hidden: { opacity: 0 },
+  visible: (custom: any) => ({
+    opacity: 1,
+
+    transition: { delay: custom * 0.4, duration: 1 },
+  }),
+};

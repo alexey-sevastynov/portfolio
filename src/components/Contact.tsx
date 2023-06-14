@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import SocialIcons from "./SocialIcons";
+import { motion } from "framer-motion";
+import { containerAnimationOpacity } from "../animateMotion/main";
 
 const StyledContact = styled.div`
   height: 100vh;
@@ -13,6 +15,7 @@ const StyledContact = styled.div`
 `;
 const Location = styled.div`
   margin-top: 152px;
+
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -94,7 +97,15 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
         </Location>
 
         <Foto>
-          <img src="image/foto.png" alt="foto" width={550} height={550} />
+          <motion.img
+            src="image/foto.png"
+            alt="foto"
+            width={550}
+            height={550}
+            variants={containerAnimationOpacity}
+            initial="hidden"
+            whileInView="visible"
+          />
         </Foto>
 
         <Phone>

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useAppDispatch } from "../redux/hook";
+import { setNameSkill, setShowDream } from "../redux/slices/main";
 
 const StyledSkillsIcons = styled.div`
   display: flex;
@@ -44,10 +46,29 @@ const StyledSkillsIcons = styled.div`
 type SkillsIconsProps = {};
 
 const SkillsIcons: React.FC<SkillsIconsProps> = () => {
+  const dispatch = useAppDispatch();
+
+  const handleMouseEnter = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    id: string
+  ) => {
+    console.log("handleMouseLeave");
+    dispatch(setShowDream(true));
+    dispatch(setNameSkill(id));
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    console.log("handleMouseEnter");
+    dispatch(setShowDream(false));
+    dispatch(setNameSkill(""));
+  };
   return (
     <StyledSkillsIcons>
       {/*______________ html */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "html")}
+        id="html"
         width="65"
         height="85"
         viewBox="0 0 65 85"
@@ -67,6 +88,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/*_____________ css */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "css")}
         width="65"
         height="85"
         viewBox="0 0 65 85"
@@ -87,6 +110,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
 
       {/* _____________ js */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "js")}
         width="76"
         height="86"
         viewBox="0 0 76 86"
@@ -106,6 +131,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ ts */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "ts")}
         width="76"
         height="86"
         viewBox="0 0 76 86"
@@ -125,6 +152,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ react */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "react")}
         width="67"
         height="85"
         viewBox="0 0 67 85"
@@ -157,6 +186,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ bootStrap */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "bootstrap")}
         width="66"
         height="87"
         viewBox="0 0 66 87"
@@ -176,6 +207,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ tailWind */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "tailwind")}
         width="65"
         height="86"
         viewBox="0 0 65 86"
@@ -197,6 +230,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ SASS */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "sass")}
         width="67"
         height="85"
         viewBox="0 0 67 85"
@@ -222,6 +257,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ Material UI */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "ui")}
         width="83"
         height="85"
         viewBox="0 0 83 85"
@@ -243,6 +280,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ styled components */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "styledComponents")}
         width="74"
         height="86"
         viewBox="0 0 74 86"
@@ -295,6 +334,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
 
       {/* _____________ motion */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "motion")}
         width="65"
         height="106"
         viewBox="0 0 65 106"
@@ -376,6 +417,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
 
       {/* _____________ router */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "router")}
         width="92"
         height="85"
         viewBox="0 0 92 85"
@@ -398,6 +441,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       {/* _____________ redux */}
 
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "redux")}
         width="65"
         height="85"
         viewBox="0 0 65 85"
@@ -441,6 +486,8 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
       </svg>
       {/* _____________ toolkit */}
       <svg
+        onMouseLeave={(e) => handleMouseLeave(e)}
+        onMouseEnter={(e) => handleMouseEnter(e, "reduxToolkit")}
         width="65"
         height="86"
         viewBox="0 0 65 86"

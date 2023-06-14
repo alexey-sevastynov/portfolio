@@ -4,6 +4,7 @@ import SocialIcons from "./SocialIcons";
 import Button from "./Button";
 import AnimationMain from "./AnimationMain";
 import { motion } from "framer-motion";
+import { animateCoverCol1, animateCoverCol2 } from "../animateMotion/main";
 
 const StyledCover = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const StyledCover = styled.div`
   }
 `;
 
-const Col1 = styled.div`
+const Col1 = styled(motion.div)`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
@@ -40,7 +41,7 @@ const Col1 = styled.div`
   }
 `;
 
-const Col2 = styled.div`
+const Col2 = styled(motion.div)`
   display: flex;
   justify-content: center;
   width: 50%;
@@ -128,7 +129,7 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
   };
   return (
     <StyledCover>
-      <Col1>
+      <Col1 initial="hidden" animate="visible" variants={animateCoverCol1}>
         <Title>
           <h1>Hi all, I'm Alexey</h1>
           <motion.svg
@@ -144,7 +145,7 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
               // ],
               transformOrigin: "50% bottom",
             }}
-            transition={{ repeat: Infinity, duration: 2 }}
+            transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}
             width="62"
             height="59"
             viewBox="0 0 62 59"
@@ -209,7 +210,8 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
           <Button text={" SEE MY RESUME "} />
         </BlockBtns>
       </Col1>
-      <Col2>
+
+      <Col2 initial="hidden" animate="visible" variants={animateCoverCol2}>
         <AnimationMain />
       </Col2>
     </StyledCover>

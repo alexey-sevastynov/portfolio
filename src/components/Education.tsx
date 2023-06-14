@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import EducationItem from "./EducationItem";
+import EducationItem, { MEducationItem } from "./EducationItem";
 import { education } from "../assets/education";
+import { motion } from "framer-motion";
 
 const StyledEducation = styled.div`
   height: 100vh;
@@ -21,13 +22,17 @@ const Education: React.FC<EducationProps> = ({ refEducation }) => {
       <StyledEducation>
         <h2>Education</h2>
 
-        {education.map((item) => (
-          <EducationItem
+        {education.map((item, id) => (
+          <MEducationItem
             key={item.image}
             image={item.image}
             title={item.title}
             subTitle={item.subTitle}
             text={item.text}
+            variants={containerAnimation}
+            initial="hidden"
+            whileInView="visible"
+            custom={id + 1}
           />
         ))}
       </StyledEducation>
@@ -36,3 +41,12 @@ const Education: React.FC<EducationProps> = ({ refEducation }) => {
 };
 
 export default Education;
+
+const containerAnimation = {
+  hidden: { opacity: 0, y: 23 },
+  visible: (custom: any) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom * 0.4 },
+  }),
+};

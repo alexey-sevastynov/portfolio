@@ -10,11 +10,14 @@ import {
   onOpenMenuMobile,
   onOpenPopupLanguage,
 } from "../redux/slices/main";
+import { motion } from "framer-motion";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled(motion.div)`
   position: sticky;
   top: ${(props) => (props.title === "down" ? "-50px" : "0px")};
   height: 50px;
+
+  transition: top 0.3s ease;
 
   background-color: ${({ theme }) => theme.colors.background};
   z-index: 3;
@@ -24,10 +27,12 @@ const StyledHeader = styled.div`
   @media (max-width: 1262px) {
     top: ${(props) => (props.title === "down" ? "-100px" : "0px")};
     height: 100px;
+    transition: top 0.3s ease;
   }
   @media (max-width: 900px) {
     top: ${(props) => (props.title === "down" ? "-500px" : "0px")};
     height: 50px;
+    transition: top 0.3s ease;
   }
 `;
 

@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
-const StyledEducationItem = styled.div`
+const StyledEducationItem = styled(motion.div)`
   cursor: default;
 
   & img {
@@ -43,6 +44,7 @@ const StyledEducationItem = styled.div`
     & #line {
       width: 100%;
       background-color: ${({ theme }) => theme.colors.backgroundTwo};
+      transition: all 1s ease;
     }
   }
 `;
@@ -78,28 +80,32 @@ interface EducationItemProps {
   image: any;
 }
 
-const EducationItem: React.FC<EducationItemProps> = ({
-  title,
-  subTitle,
-  text,
-  image,
-}) => {
-  return (
-    <StyledEducationItem>
-      <Item>
-        <div>
-          <img src={image} alt="img" />
-        </div>
-        <div>
-          <h3>{title}</h3>
-          <p>{subTitle}</p>
-          <p>{text}</p>
-        </div>
-      </Item>
+const EducationItem: React.FC<EducationItemProps> = React.forwardRef(
+  (
+    { title, subTitle, text, image },
+    ref: React.LegacyRef<HTMLDivElement> | undefined
+  ) => {
+    return (
+      <div ref={ref}>
+        <StyledEducationItem>
+          <Item>
+            <div>
+              <img src={image} alt="img" />
+            </div>
+            <div>
+              <h3>{title}</h3>
+              <p>{subTitle}</p>
+              <p>{text}</p>
+            </div>
+          </Item>
 
-      <Line id="line"></Line>
-    </StyledEducationItem>
-  );
-};
+          <Line id="line"></Line>
+        </StyledEducationItem>
+      </div>
+    );
+  }
+);
 
 export default EducationItem;
+
+export const MEducationItem = motion(EducationItem);

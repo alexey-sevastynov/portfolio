@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
@@ -91,26 +92,23 @@ interface ExperiencesItemProps {
   color: { color_1: string; color_2: string };
 }
 
-const ExperiencesItem: React.FC<ExperiencesItemProps> = ({
-  title,
-  image,
-  subTitle,
-  date,
-  text,
-  color,
-}) => {
-  return (
-    <StyledExperiencesItem>
-      <HederBlock color={color.color_1} nonce={color.color_2}>
-        <h4>{title}</h4>
-        <Icon>{image}</Icon>
-      </HederBlock>
+const ExperiencesItem: React.FC<ExperiencesItemProps> = React.forwardRef(
+  ({ title, image, subTitle, date, text, color }, ref: any) => {
+    return (
+      <StyledExperiencesItem ref={ref}>
+        <HederBlock color={color.color_1} nonce={color.color_2}>
+          <h4>{title}</h4>
+          <Icon>{image}</Icon>
+        </HederBlock>
 
-      <span>{subTitle}</span>
-      <p>{date}</p>
-      <p>{text}</p>
-    </StyledExperiencesItem>
-  );
-};
+        <span>{subTitle}</span>
+        <p>{date}</p>
+        <p>{text}</p>
+      </StyledExperiencesItem>
+    );
+  }
+);
 
 export default ExperiencesItem;
+
+export const MExperiencesItem = motion(ExperiencesItem);

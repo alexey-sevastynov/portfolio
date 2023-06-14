@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import AnimationTable from "./AnimationTable";
 import SkillsIcons from "./SkillsIcons";
+import { motion } from "framer-motion";
+import { animateSkillsCol1, animateSkillsCol2 } from "../animateMotion/main";
 
 const StyledSkills = styled.div`
   display: flex;
@@ -14,8 +16,9 @@ const StyledSkills = styled.div`
   }
 `;
 
-const Col1 = styled.div`
+const Col1 = styled(motion.div)`
   position: relative;
+
   width: 50%;
   @media (max-width: 1300px) {
     width: 60%;
@@ -32,6 +35,7 @@ const Col1 = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
+
     @media (max-width: 1200px) {
       position: static;
       bottom: unset;
@@ -45,7 +49,7 @@ const Col1 = styled.div`
   }
 `;
 
-const Col2 = styled.div`
+const Col2 = styled(motion.div)`
   width: 50%;
   @media (max-width: 1300px) {
     width: 40%;
@@ -78,10 +82,22 @@ const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
   return (
     <div ref={refSkills}>
       <StyledSkills>
-        <Col1>
+        <Col1
+          variants={animateSkillsCol1}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
           <AnimationTable />
         </Col1>
-        <Col2>
+        <Col2
+          variants={animateSkillsCol2}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
           <h2>What I do</h2>
           <h5>
             CRAZY FRONTEND DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK
