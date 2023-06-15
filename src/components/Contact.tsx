@@ -4,6 +4,7 @@ import SocialIcons from "./SocialIcons";
 import { motion } from "framer-motion";
 import { containerAnimationOpacity } from "../animateMotion/main";
 import { useAppSelector } from "../redux/hook";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledContact = styled.div`
   height: 100vh;
@@ -86,11 +87,12 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ refContact }) => {
+  const lang = useAppSelector(selectTranslations);
   const brigthTheme = useAppSelector((props) => props.main.brigthTheme);
   return (
     <div ref={refContact}>
       <StyledContact>
-        <h2>Reach Out to me!</h2>
+        <h2>{lang.contacts.title}</h2>
 
         <Location>
           {brigthTheme ? (
@@ -99,7 +101,7 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
             <img src="image/locationNight.png" alt="location" />
           )}
 
-          <p>Dnipro, Ukraine</p>
+          <p>{lang.contacts.location}</p>
         </Location>
 
         <Foto>

@@ -11,6 +11,7 @@ import {
   onOpenPopupLanguage,
 } from "../redux/slices/main";
 import { motion } from "framer-motion";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledHeader = styled(motion.div)`
   position: sticky;
@@ -43,7 +44,7 @@ const NavMenu = styled.nav`
     align-items: center;
     flex-wrap: wrap;
     padding: 0px;
-    max-width: 850px;
+    max-width: 900px;
 
     & li {
       display: flex;
@@ -117,6 +118,7 @@ const Header: React.FC<HeaderProps> = ({
   refContact,
 }) => {
   const dispatch = useAppDispatch();
+  const lang = useAppSelector(selectTranslations);
   const openMenuMobile = useAppSelector((props) => props.main.openMenuMobile);
   const scrollDirection = useScrollDirection();
 
@@ -137,13 +139,19 @@ const Header: React.FC<HeaderProps> = ({
 
       <NavMenu>
         <ul>
-          <li onClick={() => buttonHandler(refSkills)}>Skills</li>
-          <li onClick={() => buttonHandler(refEducation)}>Education</li>
-          <li onClick={() => buttonHandler(refExperiences)}>
-            Work Experiences
+          <li onClick={() => buttonHandler(refSkills)}>{lang.header.skills}</li>
+          <li onClick={() => buttonHandler(refEducation)}>
+            {lang.header.education}
           </li>
-          <li onClick={() => buttonHandler(refProjects)}>My Projects</li>
-          <li onClick={() => buttonHandler(refContact)}>Contact me</li>
+          <li onClick={() => buttonHandler(refExperiences)}>
+            {lang.header.work}
+          </li>
+          <li onClick={() => buttonHandler(refProjects)}>
+            {lang.header.projects}
+          </li>
+          <li onClick={() => buttonHandler(refContact)}>
+            {lang.header.contact}
+          </li>
 
           <LanguageBlock />
           <ModeBlock />
@@ -151,46 +159,6 @@ const Header: React.FC<HeaderProps> = ({
       </NavMenu>
 
       <NavMenuMob>
-        {/* <motion.svg
-          onClick={() => dispatch(onOpenMenuMobile())}
-          width="24"
-          height="18"
-          viewBox="0 0 24 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {openMenuMobile ? (
-            <rect
-              x="1.14716"
-              y="3.05176e-05"
-              width="28"
-              height="2"
-              rx="1"
-              transform="rotate(35 1.14716 3.05176e-05)"
-              fill="black"
-            />
-          ) : (
-            <rect width="24" height="2" rx="1" fill="black" />
-          )}
-
-          {openMenuMobile ? null : (
-            <rect y="8" width="24" height="2" rx="1" fill="black" />
-          )}
-
-          {openMenuMobile ? (
-            <rect
-              y="16.0601"
-              width="28"
-              height="2"
-              rx="1"
-              transform="rotate(-35 0 16.0601)"
-              fill="black"
-            />
-          ) : (
-            <rect y="16" width="24" height="2" rx="1" fill="black" />
-          )}
-        </motion.svg> */}
-
         <svg
           onClick={() => dispatch(onOpenMenuMobile())}
           width="24"
@@ -238,31 +206,6 @@ const Header: React.FC<HeaderProps> = ({
             />
           )}
         </svg>
-        {/* <svg
-          width="25"
-          height="25"
-          viewBox="0 0 25 25"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            x="2.82843"
-            width="30"
-            height="4"
-            rx="1"
-            transform="rotate(45 2.82843 0)"
-            fill="black"
-          />
-          <rect
-            x="-1.52588e-05"
-            y="21.2132"
-            width="30"
-            height="4"
-            rx="1"
-            transform="rotate(-45 -1.52588e-05 21.2132)"
-            fill="black"
-          />
-        </svg> */}
       </NavMenuMob>
 
       {openMenuMobile && (

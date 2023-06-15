@@ -67,21 +67,32 @@ li {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 700;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
 
-     @media (max-width: 1200px) {
+     @media (max-width: 1320px) {
+      font-size: 36px;
+    }
+     @media (max-width: 1240px) {
       font-size: 30px;
     }
      @media (max-width: 600px) {
       letter-spacing: 0.1rem;
       font-size: 22px;
     }
+     @media (max-width: 500px) {
+      letter-spacing: 0.1rem;
+      font-size: 20px;
+    }
+     @media (max-width: 400px) {
+      letter-spacing: 0.1rem;
+      font-size: 18px;
+    }
   }
 
 h2 {
-    font-size: 48px;
+    font-size: 40px;
     padding-top: 40px;
     padding-bottom: 30px;
     @media (max-width: 600px) {
@@ -125,6 +136,10 @@ p{
   font-size: 20px;
    @media (max-width: 600px) {
       font-size: 16px;
+    }
+    @media (max-width: 400px) {
+     
+      font-size: 14px;
     }
 }
 

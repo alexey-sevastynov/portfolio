@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import mainSlice from "./slices/main";
+import i18nSlice from "./slices/i18next";
 
 export const store = configureStore({
   reducer: {
     main: mainSlice,
+    i18n: i18nSlice,
   },
 });
 

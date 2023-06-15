@@ -3,6 +3,8 @@ import styled from "styled-components";
 import EducationItem, { MEducationItem } from "./EducationItem";
 import { education } from "../assets/education";
 import { motion } from "framer-motion";
+import { useAppSelector } from "../redux/hook";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledEducation = styled.div`
   height: 100vh;
@@ -17,24 +19,34 @@ type EducationProps = {
 };
 
 const Education: React.FC<EducationProps> = ({ refEducation }) => {
+  const currentLang = useAppSelector((props) => props.i18n.lang);
+  const lang = useAppSelector(selectTranslations);
+
+  console.log(education.ua);
+
+  const showEducations = (currentLang: string) => {
+    if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
+      return education[currentLang].map((item, id) => (
+        <MEducationItem
+          key={item.image}
+          image={item.image}
+          title={item.title}
+          subTitle={item.subTitle}
+          text={item.text}
+          variants={containerAnimation}
+          initial="hidden"
+          whileInView="visible"
+          custom={id + 1}
+        />
+      ));
+    }
+  };
+
   return (
     <div ref={refEducation}>
       <StyledEducation>
-        <h2>Education</h2>
-
-        {education.map((item, id) => (
-          <MEducationItem
-            key={item.image}
-            image={item.image}
-            title={item.title}
-            subTitle={item.subTitle}
-            text={item.text}
-            variants={containerAnimation}
-            initial="hidden"
-            whileInView="visible"
-            custom={id + 1}
-          />
-        ))}
+        <h2>{lang.education.title}</h2>
+        {showEducations(currentLang)}
       </StyledEducation>
     </div>
   );

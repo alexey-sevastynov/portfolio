@@ -1,0 +1,36 @@
+{
+  "header": {
+    "skills": "Skills",
+    "education": "Education",
+    "work": "Work Experiences",
+    "projects": "My Projects",
+    "contact": "Contact me",
+    "en": "EN",
+    "ua": "UA",
+    "ru": "RU"
+  },
+  "cover": {
+    "title": "Hi all, I'm Alexey",
+    "subTitle": "A passionate Frontend Software Developer 🚀 having an experience of building Web applications with JavaScript / Reactjs.",
+    "btn_1": "CONTACT ME",
+    "btn_2": "MY RESUME .pdf"
+  },
+  "skills": {
+    "title": "What I do",
+    "subTitle": "CRAZY FRONTEND DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK"
+  },
+  "education": {
+    "title": "Education"
+  },
+  "experiences": {
+    "title": "Experiences"
+  },
+  "projects": {
+    "title": "My Projects",
+    "btn": "MORE PROJECTS"
+  },
+  "contacts": {
+    "title": "Reach Out to me!",
+    "location": "Dnipro, Ukraine"
+  }
+}

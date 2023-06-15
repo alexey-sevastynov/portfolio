@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { motion } from "framer-motion";
 import { onOpenPopupLanguage } from "../redux/slices/main";
+import { setLang } from "../redux/slices/i18next";
 
 const StyledLanguageBlock = styled.div`
   font-weight: 700;
@@ -15,6 +16,7 @@ const StyledLanguageBlock = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  text-transform: uppercase;
   &:hover {
     cursor: pointer;
   }
@@ -37,7 +39,7 @@ const LanguagePopup = styled.div`
   & p {
     color: ${({ theme }) => theme.colors.border};
 
-    &:nth-child(1) {
+    &:nth-child(${(props) => props.defaultValue}) {
       font-weight: 700;
     }
   }
@@ -47,14 +49,23 @@ interface LanguageBlockProps {}
 
 const LanguageBlock: React.FC<LanguageBlockProps> = () => {
   const dispatch = useAppDispatch();
+  const lang = useAppSelector((props) => props.i18n.lang);
   const openPopupLanguage = useAppSelector(
     (props) => props.main.openPopupLanguage
   );
 
+  const selectedLang = (lang: string) => {
+    if (lang === "en") return 1;
+    if (lang === "ua") return 2;
+    if (lang === "ru") return 3;
+  };
+
+  console.log(selectedLang(lang));
+
   return (
     <div onClick={() => dispatch(onOpenPopupLanguage())}>
       <StyledLanguageBlock>
-        EN
+        {lang}
         {openPopupLanguage && (
           <motion.div
             initial={{ position: "absolute", right: 7, opacity: 0 }}
@@ -66,10 +77,10 @@ const LanguageBlock: React.FC<LanguageBlockProps> = () => {
             }}
             transition={{ duration: 0.2 }}
           >
-            <LanguagePopup>
-              <p>EN</p>
-              <p>EN</p>
-              <p>RU</p>
+            <LanguagePopup defaultValue={selectedLang(lang)}>
+              <p onClick={() => dispatch(setLang("en"))}>EN</p>
+              <p onClick={() => dispatch(setLang("ua"))}>UA</p>
+              <p onClick={() => dispatch(setLang("ru"))}>RU</p>
             </LanguagePopup>
           </motion.div>
         )}

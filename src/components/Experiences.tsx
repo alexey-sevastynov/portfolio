@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import ExperiencesItem, { MExperiencesItem } from "./ExperiencesItem";
 import { experiences } from "../assets/experiences";
+import { useAppSelector } from "../redux/hook";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledExperiences = styled.div`
   height: 100vh;
@@ -32,22 +34,29 @@ type ExperiencesProps = {
 };
 
 const Experiences: React.FC<ExperiencesProps> = ({ refExperiences }) => {
+  const currentLang = useAppSelector((props) => props.i18n.lang);
+  const lang = useAppSelector(selectTranslations);
+
+  const showExperiences = (currentLang: string) => {
+    if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
+      return experiences[currentLang].map((item, id) => (
+        <MExperiencesItem
+          key={id}
+          {...item}
+          variants={containerAnimation}
+          initial="hidden"
+          whileInView="visible"
+          custom={id + 1}
+        />
+      ));
+    }
+  };
+
   return (
     <div ref={refExperiences}>
       <StyledExperiences>
-        <h2>Experiences</h2>
-        <Flex>
-          {experiences.map((item, id) => (
-            <MExperiencesItem
-              key={id}
-              {...item}
-              variants={containerAnimation}
-              initial="hidden"
-              whileInView="visible"
-              custom={id + 1}
-            />
-          ))}
-        </Flex>
+        <h2>{lang.experiences.title}</h2>
+        <Flex>{showExperiences(currentLang)}</Flex>
       </StyledExperiences>
     </div>
   );

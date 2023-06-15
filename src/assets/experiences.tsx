@@ -121,21 +121,59 @@ const image_2 = (
   </svg>
 );
 
-export const experiences = [
-  {
-    title: "Freelance",
-    image: image_1,
-    subTitle: "Website layout",
-    date: "May 2021 – May 2022",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    color: { color_1: "#003f7a", color_2: "#0075e2" },
-  },
-  {
-    title: "Freelance",
-    image: image_2,
-    subTitle: "Website layout",
-    date: "May 2021 – May 2022",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    color: { color_1: "#A70100", color_2: "#FF0100" },
-  },
-];
+export const experiences = {
+  en: [
+    {
+      title: "Freelance",
+      image: image_1,
+      subTitle: "Website layout",
+      date: "May 2021 – May 2022",
+      text: "Website layout HTML + CSS/SCSS. Design. Development of one-page sites.",
+      color: { color_1: "#003f7a", color_2: "#0075e2" },
+    },
+    {
+      title: "Unimay Media",
+      image: image_2,
+      subTitle: "Front-End Developer Intern",
+      date: "February 2023 – Mart 2023",
+      text: 'React / JavaScript / TypeScript Front End Intern. Project "Unimay Media", a site for viewing Anime in Ukrainian translation.',
+      color: { color_1: "#A70100", color_2: "#FF0100" },
+    },
+  ],
+  ua: [
+    {
+      title: "Freelance",
+      image: image_1,
+      subTitle: "Верстка сайтів",
+      date: "травень 2021 – травень 2022",
+      text: "Верстка сайту HTML + CSS/SCSS. Дизайн. Розробка односторінкових сайтів.",
+      color: { color_1: "#003f7a", color_2: "#0075e2" },
+    },
+    {
+      title: "Unimay Media",
+      image: image_2,
+      subTitle: "Front-End розробник стажер",
+      date: "February 2023 – Mart 2023",
+      text: 'Стажер зі створення зовнішнього інтерфейсу React/JavaScript/TypeScript. Проект "Unimay Media", сайт для простіру Аніме українським перекладом.\'',
+      color: { color_1: "#A70100", color_2: "#FF0100" },
+    },
+  ],
+  ru: [
+    {
+      title: "Freelance",
+      image: image_1,
+      subTitle: "Верстка сайтов",
+      date: "май 2021 г. – май 2022 г.",
+      text: "Верстка сайта HTML + CSS/SCSS. Дизайн. Разработка одностраничных сайтов.",
+      color: { color_1: "#003f7a", color_2: "#0075e2" },
+    },
+    {
+      title: "Unimay Media",
+      image: image_2,
+      subTitle: "Стажер Front-End разработчик",
+      date: "Февраль 2023 - Mart 2023",
+      text: 'Стажер по созданию внешнего интерфейса React / JavaScript / TypeScript. Проект "Unimay Media", сайт для просотра Аниме украинским переводом.',
+      color: { color_1: "#A70100", color_2: "#FF0100" },
+    },
+  ],
+};

@@ -5,6 +5,8 @@ import Button from "./Button";
 import AnimationMain from "./AnimationMain";
 import { motion } from "framer-motion";
 import { animateCoverCol1, animateCoverCol2 } from "../animateMotion/main";
+import { selectTranslations } from "../redux/slices/i18next";
+import { useAppSelector } from "../redux/hook";
 
 const StyledCover = styled.div`
   display: flex;
@@ -94,14 +96,11 @@ const SubTitle = styled.p`
   margin-bottom: 30px;
   width: 100%;
   font-weight: 700;
-  font-size: 20px;
+  letter-spacing: 0.2rem;
+  word-spacing: 0.4rem;
   line-height: 40px;
 
-  @media (max-width: 1200px) {
-    font-size: 18px;
-  }
   @media (max-width: 600px) {
-    font-size: 16px;
     text-align: center;
     line-height: 30px;
   }
@@ -122,6 +121,8 @@ type CoverProps = {
 };
 
 const Cover: React.FC<CoverProps> = ({ refContact }) => {
+  const lang = useAppSelector(selectTranslations);
+
   const buttonHandler = (ref: any) => {
     ref.current.scrollIntoView({
       behavior: "smooth",
@@ -131,7 +132,7 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
     <StyledCover>
       <Col1 initial="hidden" animate="visible" variants={animateCoverCol1}>
         <Title>
-          <h1>Hi all, I'm Alexey</h1>
+          <h1>{lang.cover.title}</h1>
           <motion.svg
             //@ts-ignore
             animate={{
@@ -195,19 +196,15 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
             </defs>
           </motion.svg>
         </Title>
-        <SubTitle>
-          A passionate Frontend Software Developer 🚀 having an experience of
-          building Web applications with JavaScript / Reactjs / Nodejs and some
-          other cool libraries and frameworks.
-        </SubTitle>
+        <SubTitle>{lang.cover.subTitle}</SubTitle>
         <SocialIcons />
 
         <BlockBtns>
           <div onClick={() => buttonHandler(refContact)}>
-            <Button text={"CONTACT ME"} />
+            <Button text={lang.cover.btn_1} />
           </div>
 
-          <Button text={" SEE MY RESUME "} />
+          <Button text={lang.cover.btn_2} />
         </BlockBtns>
       </Col1>
 

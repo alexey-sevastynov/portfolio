@@ -4,6 +4,8 @@ import AnimationTable from "./AnimationTable";
 import SkillsIcons from "./SkillsIcons";
 import { motion } from "framer-motion";
 import { animateSkillsCol1, animateSkillsCol2 } from "../animateMotion/main";
+import { useAppSelector } from "../redux/hook";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledSkills = styled.div`
   display: flex;
@@ -79,6 +81,7 @@ type SkillsProps = {
 };
 
 const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
+  const lang = useAppSelector(selectTranslations);
   return (
     <div ref={refSkills}>
       <StyledSkills>
@@ -98,10 +101,8 @@ const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 1 }}
         >
-          <h2>What I do</h2>
-          <h5>
-            CRAZY FRONTEND DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK
-          </h5>
+          <h2>{lang.skills.title}</h2>
+          <h5>{lang.skills.subTitle}</h5>
           <SkillsIcons />
         </Col2>
       </StyledSkills>

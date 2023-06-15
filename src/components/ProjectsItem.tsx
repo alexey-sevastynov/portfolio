@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
-import { useAppSelector } from "../redux/hook";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { setShowLinkAnimation } from "../redux/slices/main";
 
 const StyledProjectsItem = styled.div`
   box-sizing: border-box;
@@ -26,6 +27,10 @@ const StyledProjectsItem = styled.div`
 const Header = styled.div`
   display: flex;
   margin-bottom: 17px;
+
+  & a {
+    text-decoration: none;
+  }
 
   & p {
     margin-left: 11px;
@@ -73,7 +78,8 @@ const Circle = styled.div`
   margin-right: 6px;
   width: 10px;
   height: 10px;
-  background-color: #043bff;
+  background-color: ${(props) =>
+    props.color === "TypeScript" ? "#043bff" : "#FFA800"};
   border-radius: 100%;
 `;
 
@@ -86,16 +92,40 @@ const SiteIconBlock = styled.div`
 `;
 
 interface ProjectsItemProps {
+  id: number;
   title: string;
   text: string;
   languageProgram: string;
+  link: string;
+  handleMouseEnter: any;
+  handleMouseLeave: any;
 }
 
 const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
-  ({ title, text, languageProgram }, ref: any) => {
-    const brigthTheme = useAppSelector((props) => props.main.brigthTheme);
+  (
+    {
+      title,
+      text,
+      languageProgram,
+      link,
+      handleMouseLeave,
+      handleMouseEnter,
+      id,
+    },
+    ref: any
+  ) => {
+    const { linkAnimationId, brigthTheme } = useAppSelector(
+      (props) => props.main
+    );
+
+    const linkGitHub = `https://github.com/alexey-sevastynov/${title}`;
+
     return (
-      <StyledProjectsItem ref={ref}>
+      <StyledProjectsItem
+        ref={ref}
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+      >
         <div>
           <Header>
             <svg
@@ -132,15 +162,22 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                 fill="white"
               />
             </svg>
-
-            <p>{title}</p>
+            <motion.a
+              initial={{ textDecoration: "unset" }}
+              whileHover={{ textDecoration: "underline" }}
+              transition={{ duration: 0.4 }}
+              href={linkGitHub}
+              target="blank"
+            >
+              <p>{title}</p>
+            </motion.a>
           </Header>
           <h6>{text}</h6>
         </div>
 
         <Footer>
           <LanguageBlock>
-            <Circle />
+            <Circle color={languageProgram} />
             <p>{languageProgram}</p>
           </LanguageBlock>
           <ViewsBlock>
@@ -181,16 +218,56 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
             <p>3</p>
           </ViewsBlock>
           <SiteIconBlock>
-            {brigthTheme ? (
-              <img src="image/link.png" alt="link" width={25} height={25} />
-            ) : (
-              <img
-                src="image/linkNight.png"
-                alt="link"
-                width={25}
-                height={25}
-              />
-            )}
+            <a href={link} target="blank">
+              {brigthTheme ? (
+                linkAnimationId === id ? (
+                  <motion.img
+                    animate={{
+                      rotate: [0, 360],
+                      transform: ["scale(1,1)", "scale(1.2,1.2)"],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      type: "spring",
+                      duration: 0.6,
+                      delay: 2,
+                      damping: 0.2,
+                    }}
+                    src="image/link.png"
+                    alt="link"
+                    width={25}
+                    height={25}
+                  />
+                ) : (
+                  <img src="image/link.png" alt="link" width={25} height={25} />
+                )
+              ) : linkAnimationId === id ? (
+                <motion.img
+                  animate={{
+                    rotate: [0, 360],
+                    transform: ["scale(1,1)", "scale(1.2,1.2)"],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    type: "spring",
+                    duration: 0.6,
+                    delay: 2,
+                    damping: 0.2,
+                  }}
+                  src="image/linkNight.png"
+                  alt="link"
+                  width={25}
+                  height={25}
+                />
+              ) : (
+                <img
+                  src="image/linkNight.png"
+                  alt="link"
+                  width={25}
+                  height={25}
+                />
+              )}
+            </a>
           </SiteIconBlock>
         </Footer>
       </StyledProjectsItem>

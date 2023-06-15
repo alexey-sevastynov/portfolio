@@ -4,6 +4,12 @@ import styled from "styled-components";
 import ProjectsItem, { MProjectsItem } from "./ProjectsItem";
 import { projects } from "../assets/projects";
 import Button from "./Button";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { selectTranslations } from "../redux/slices/i18next";
+import {
+  setShowLinkAnimation,
+  setShowLinkAnimationId,
+} from "../redux/slices/main";
 
 const StyledProjects = styled.div`
   height: 100vh;
@@ -42,24 +48,47 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
+  const dispatch = useAppDispatch();
+
+  const currentLang = useAppSelector((props) => props.i18n.lang);
+  const lang = useAppSelector(selectTranslations);
+
+  const { linkAnimation } = useAppSelector((props) => props.main);
+
+  const handleMouseEnter = (id: number) => {
+    dispatch(setShowLinkAnimation(true));
+    dispatch(setShowLinkAnimationId(id));
+  };
+
+  const handleMouseLeave = () => {
+    dispatch(setShowLinkAnimation(false));
+    dispatch(setShowLinkAnimationId(null));
+  };
+
+  const showProjects = (currentLang: string) => {
+    if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
+      return projects[currentLang].map((item, id) => (
+        <MProjectsItem
+          key={id}
+          id={id}
+          handleMouseLeave={handleMouseLeave}
+          handleMouseEnter={() => handleMouseEnter(id)}
+          {...item}
+          variants={containerAnimation}
+          initial="hidden"
+          whileInView="visible"
+          custom={id + 1}
+        />
+      ));
+    }
+  };
   return (
     <div ref={refProjects}>
       <StyledProjects>
-        <h2>My Projects</h2>
-        <Flex>
-          {projects.map((item, id) => (
-            <MProjectsItem
-              key={id}
-              {...item}
-              variants={containerAnimation}
-              initial="hidden"
-              whileInView="visible"
-              custom={id + 1}
-            />
-          ))}
-        </Flex>
+        <h2>{lang.projects.title}</h2>
+        <Flex>{showProjects(currentLang)}</Flex>
         <ButtonBlock>
-          <Button text="MORE PROJECTS" />
+          <Button text={lang.projects.btn} />
         </ButtonBlock>
       </StyledProjects>
     </div>

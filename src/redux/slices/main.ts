@@ -7,6 +7,8 @@ type InitialStateTypes = {
   openMenuMobile: boolean;
   showDream: boolean;
   nameSkill: string;
+  linkAnimation: boolean;
+  linkAnimationId: number | null;
 };
 
 const initialState: InitialStateTypes = {
@@ -15,6 +17,8 @@ const initialState: InitialStateTypes = {
   openMenuMobile: false,
   showDream: false,
   nameSkill: "",
+  linkAnimation: false,
+  linkAnimationId: null,
 };
 
 const mainSlice = createSlice({
@@ -39,6 +43,12 @@ const mainSlice = createSlice({
     setNameSkill: (state, action: PayloadAction<string>) => {
       state.nameSkill = action.payload;
     },
+    setShowLinkAnimation: (state, action: PayloadAction<boolean>) => {
+      state.linkAnimation = action.payload;
+    },
+    setShowLinkAnimationId: (state, action: PayloadAction<number | null>) => {
+      state.linkAnimationId = action.payload;
+    },
   },
 });
 export const {
@@ -47,6 +57,8 @@ export const {
   onOpenMenuMobile,
   setShowDream,
   setNameSkill,
+  setShowLinkAnimation,
+  setShowLinkAnimationId,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;
