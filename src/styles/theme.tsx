@@ -18,7 +18,7 @@ const brigthTheme: ITheme = {
     background: "white",
     backgroundTwo: "#568ED5",
     border: "black",
-    lightGrey: "#BEBEBE",
+    lightGrey: "#787878",
   },
 };
 
@@ -45,6 +45,15 @@ body{
       props.suppressMultiMountWarning
         ? brigthTheme.colors.text
         : theme.colors.text};
+
+/* forbid select text */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 };
 
 li {

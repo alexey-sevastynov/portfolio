@@ -87,7 +87,7 @@ const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 1, delay: 0.6 }}
         >
           <AnimationTable />
         </Col1>
@@ -96,7 +96,7 @@ const Skills: React.FC<SkillsProps> = ({ refSkills }) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           <h2>What I do</h2>
           <h5>

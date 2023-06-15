@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SocialIcons from "./SocialIcons";
 import { motion } from "framer-motion";
 import { containerAnimationOpacity } from "../animateMotion/main";
+import { useAppSelector } from "../redux/hook";
 
 const StyledContact = styled.div`
   height: 100vh;
@@ -14,9 +15,9 @@ const StyledContact = styled.div`
   }
 `;
 const Location = styled.div`
-  margin-top: 152px;
+  padding-top: 152px;
 
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   & img {
@@ -24,20 +25,20 @@ const Location = styled.div`
   }
   @media (max-width: 600px) {
     justify-content: center;
-    margin-top: 50px;
+    padding-top: 50px;
   }
 `;
 
 const Phone = styled.div`
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   display: flex;
   align-items: center;
   & img {
-    margin-right: 18px;
+    padding-right: 18px;
   }
   @media (max-width: 600px) {
-    margin-bottom: 0px;
-    margin-top: 30px;
+    padding-bottom: 0px;
+    padding-top: 30px;
     justify-content: center;
   }
 `;
@@ -85,14 +86,19 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ refContact }) => {
+  const brigthTheme = useAppSelector((props) => props.main.brigthTheme);
   return (
     <div ref={refContact}>
       <StyledContact>
         <h2>Reach Out to me!</h2>
 
         <Location>
-          <img src="image/locationNight.png" alt="location" />
-          {/* <img src="image/location" alt="location" /> */}
+          {brigthTheme ? (
+            <img src="image/location.png" alt="location" />
+          ) : (
+            <img src="image/locationNight.png" alt="location" />
+          )}
+
           <p>Dnipro, Ukraine</p>
         </Location>
 
@@ -109,8 +115,12 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
         </Foto>
 
         <Phone>
-          <img src="image/phoneNight.png" alt="phone" />
-          {/* <img src="image/phone.png" alt="phone" /> */}
+          {brigthTheme ? (
+            <img src="image/phone.png" alt="phone" />
+          ) : (
+            <img src="image/phoneNight.png" alt="phone" />
+          )}
+
           <p>+38 097 421 19 29</p>
         </Phone>
         <CenterMob>

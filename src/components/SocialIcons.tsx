@@ -7,10 +7,19 @@ const StyledSocialIcons = styled.div`
     &:not(:last-child) {
       margin-right: 19px;
     }
+    &:hover {
+      &:first-child,
+      &:last-child {
+        & path {
+          fill: black;
+        }
+      }
+    }
   }
 
   & svg {
     cursor: pointer;
+
     &:hover {
       & circle {
         &:first-child {

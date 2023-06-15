@@ -1,7 +1,7 @@
 import React from "react";
 
 const useScrollUp = () => {
-  const [scrollDirection, setScrollDirection] = React.useState("");
+  const [scrollDirection, setScrollDirection] = React.useState("up");
 
   React.useEffect(() => {
     const updateScrollDirection = () => {

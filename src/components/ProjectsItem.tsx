@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
+import { useAppSelector } from "../redux/hook";
 
 const StyledProjectsItem = styled.div`
   box-sizing: border-box;
@@ -28,6 +29,12 @@ const Header = styled.div`
 
   & p {
     margin-left: 11px;
+  }
+
+  & svg {
+    & path {
+      fill: ${({ theme }) => theme.colors.border};
+    }
   }
 `;
 
@@ -86,6 +93,7 @@ interface ProjectsItemProps {
 
 const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
   ({ title, text, languageProgram }, ref: any) => {
+    const brigthTheme = useAppSelector((props) => props.main.brigthTheme);
     return (
       <StyledProjectsItem ref={ref}>
         <div>
@@ -173,8 +181,16 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
             <p>3</p>
           </ViewsBlock>
           <SiteIconBlock>
-            {/* <img src="image/link.png" alt="link" width={25} height={25} /> */}
-            <img src="image/linkNight.png" alt="link" width={25} height={25} />
+            {brigthTheme ? (
+              <img src="image/link.png" alt="link" width={25} height={25} />
+            ) : (
+              <img
+                src="image/linkNight.png"
+                alt="link"
+                width={25}
+                height={25}
+              />
+            )}
           </SiteIconBlock>
         </Footer>
       </StyledProjectsItem>

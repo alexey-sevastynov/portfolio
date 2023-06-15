@@ -18,12 +18,11 @@ import useScrollUp from "./hooks/useScrollUp";
 // `;
 
 const UpScreen = styled.section`
-  width: 100%;
+  width: 50px;
   position: sticky;
   right: 0;
   bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
+  float: right;
 
   & svg {
     cursor: pointer;
