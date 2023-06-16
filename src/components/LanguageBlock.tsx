@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { motion } from "framer-motion";
 import { onOpenPopupLanguage } from "../redux/slices/main";
-import { setLang } from "../redux/slices/i18next";
+import { selectTranslations, setLang } from "../redux/slices/i18next";
 
 const StyledLanguageBlock = styled.div`
   font-weight: 700;
@@ -49,6 +49,7 @@ interface LanguageBlockProps {}
 
 const LanguageBlock: React.FC<LanguageBlockProps> = () => {
   const dispatch = useAppDispatch();
+  const t = useAppSelector(selectTranslations);
   const lang = useAppSelector((props) => props.i18n.lang);
   const openPopupLanguage = useAppSelector(
     (props) => props.main.openPopupLanguage
@@ -60,12 +61,16 @@ const LanguageBlock: React.FC<LanguageBlockProps> = () => {
     if (lang === "ru") return 3;
   };
 
-  console.log(selectedLang(lang));
+  const currentLanguage = (lang: string) => {
+    if (lang === "en") return "EN";
+    if (lang === "ua") return "УКР";
+    if (lang === "ru") return "РУС";
+  };
 
   return (
     <div onClick={() => dispatch(onOpenPopupLanguage())}>
       <StyledLanguageBlock>
-        {lang}
+        {currentLanguage(lang)}
         {openPopupLanguage && (
           <motion.div
             initial={{ position: "absolute", right: 7, opacity: 0 }}
@@ -78,9 +83,9 @@ const LanguageBlock: React.FC<LanguageBlockProps> = () => {
             transition={{ duration: 0.2 }}
           >
             <LanguagePopup defaultValue={selectedLang(lang)}>
-              <p onClick={() => dispatch(setLang("en"))}>EN</p>
-              <p onClick={() => dispatch(setLang("ua"))}>UA</p>
-              <p onClick={() => dispatch(setLang("ru"))}>RU</p>
+              <p onClick={() => dispatch(setLang("en"))}>{t.header.en}</p>
+              <p onClick={() => dispatch(setLang("ua"))}>{t.header.ua}</p>
+              <p onClick={() => dispatch(setLang("ru"))}>{t.header.ru}</p>
             </LanguagePopup>
           </motion.div>
         )}

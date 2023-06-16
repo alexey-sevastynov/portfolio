@@ -12,18 +12,21 @@ import {
 } from "../redux/slices/main";
 import { motion } from "framer-motion";
 import { selectTranslations } from "../redux/slices/i18next";
+import Logotype from "./Logotype";
 
 const StyledHeader = styled(motion.div)`
   position: sticky;
-  top: ${(props) => (props.title === "down" ? "-50px" : "0px")};
-  height: 50px;
+  top: ${(props) => (props.title === "down" ? "-80px" : "0px")};
+  height: 80px;
 
   transition: top 0.3s ease;
 
   background-color: ${({ theme }) => theme.colors.background};
+
   z-index: 3;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 1262px) {
     top: ${(props) => (props.title === "down" ? "-100px" : "0px")};
@@ -31,9 +34,7 @@ const StyledHeader = styled(motion.div)`
     transition: top 0.3s ease;
   }
   @media (max-width: 900px) {
-    top: ${(props) => (props.title === "down" ? "-500px" : "0px")};
-    height: 50px;
-    transition: top 0.3s ease;
+    top: ${(props) => (props.title === "down" ? "-700px" : "0px")};
   }
 `;
 
@@ -100,7 +101,7 @@ const Logo = styled.h5`
 const MenuBlock = styled.div`
   position: absolute;
   width: 100%;
-  top: 50px;
+  top: 100px;
 `;
 
 interface HeaderProps {
@@ -135,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({
       title={scrollDirection}
     >
       <Logo onClick={() => buttonHandler(refContact)}>
-        {"<Alexey Sevastynov />"}
+        <Logotype />
       </Logo>
 
       <NavMenu>
@@ -162,8 +163,8 @@ const Header: React.FC<HeaderProps> = ({
       <NavMenuMob>
         <svg
           onClick={() => dispatch(onOpenMenuMobile())}
-          width="24"
-          height="25"
+          width="40"
+          height="40"
           viewBox="0 0 24 25"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

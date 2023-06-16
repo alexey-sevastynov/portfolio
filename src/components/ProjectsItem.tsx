@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { setShowLinkAnimation } from "../redux/slices/main";
 
+import link from "../assets/image/link.png";
+import linkNight from "../assets/image/linkNight.png";
+
 const StyledProjectsItem = styled.div`
   box-sizing: border-box;
   display: flex;
@@ -233,13 +236,13 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                       delay: 2,
                       damping: 0.2,
                     }}
-                    src="image/link.png"
+                    src={link}
                     alt="link"
                     width={25}
                     height={25}
                   />
                 ) : (
-                  <img src="image/link.png" alt="link" width={25} height={25} />
+                  <img src={link} alt="link" width={25} height={25} />
                 )
               ) : linkAnimationId === id ? (
                 <motion.img
@@ -254,18 +257,13 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                     delay: 2,
                     damping: 0.2,
                   }}
-                  src="image/linkNight.png"
+                  src={linkNight}
                   alt="link"
                   width={25}
                   height={25}
                 />
               ) : (
-                <img
-                  src="image/linkNight.png"
-                  alt="link"
-                  width={25}
-                  height={25}
-                />
+                <img src={linkNight} alt="link" width={25} height={25} />
               )}
             </a>
           </SiteIconBlock>

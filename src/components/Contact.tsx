@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import { containerAnimationOpacity } from "../animateMotion/main";
 import { useAppSelector } from "../redux/hook";
 import { selectTranslations } from "../redux/slices/i18next";
+import phone from "../assets/image/phone.png";
+import phoneNight from "../assets/image/phoneNight.png";
+import location from "../assets/image/location.png";
+import locationNight from "../assets/image/locationNight.png";
+import foto from "../assets/image/foto.png";
 
 const StyledContact = styled.div`
   height: 100vh;
@@ -96,9 +101,9 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
 
         <Location>
           {brigthTheme ? (
-            <img src="image/location.png" alt="location" />
+            <img src={location} alt="location" />
           ) : (
-            <img src="image/locationNight.png" alt="location" />
+            <img src={locationNight} alt="location" />
           )}
 
           <p>{lang.contacts.location}</p>
@@ -106,7 +111,7 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
 
         <Foto>
           <motion.img
-            src="image/foto.png"
+            src={foto}
             alt="foto"
             width={550}
             height={550}
@@ -118,9 +123,9 @@ const Contact: React.FC<ContactProps> = ({ refContact }) => {
 
         <Phone>
           {brigthTheme ? (
-            <img src="image/phone.png" alt="phone" />
+            <img src={phone} alt="phone" />
           ) : (
-            <img src="image/phoneNight.png" alt="phone" />
+            <img src={phoneNight} alt="phone" />
           )}
 
           <p>+38 097 421 19 29</p>

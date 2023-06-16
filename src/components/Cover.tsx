@@ -109,10 +109,20 @@ const SubTitle = styled.p`
 const BlockBtns = styled.div`
   margin-top: 60px;
   display: flex;
+  column-gap: 50px;
   & button {
     &:nth-child(1) {
-      margin-right: 50px;
+      /* margin-right: 50px; */
     }
+  }
+
+  & a {
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
+    line-height: 30px;
   }
 `;
 

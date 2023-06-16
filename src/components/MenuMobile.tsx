@@ -4,13 +4,15 @@ import LanguageBlock from "./LanguageBlock";
 import ModeBlock from "./ModeBlock";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { onOpenMenuMobile } from "../redux/slices/main";
+import { selectTranslations } from "../redux/slices/i18next";
 
 const StyledMenuBobile = styled.div`
   position: sticky;
-  top: 50px;
+  bottom: 0;
   width: 100%;
   height: 450px;
   background-color: ${({ theme }) => theme.colors.background};
+
   z-index: 2;
 
   & ul {
@@ -53,6 +55,7 @@ const MenuMobile: React.FC<MenuMobileProps> = ({
   refContact,
 }) => {
   const dispatch = useAppDispatch();
+  const lang = useAppSelector(selectTranslations);
   const openMenuMobile = useAppSelector((props) => props.main.openMenuMobile);
   const buttonHandler = (ref: any) => {
     ref.current.scrollIntoView({
@@ -67,13 +70,19 @@ const MenuMobile: React.FC<MenuMobileProps> = ({
     <StyledMenuBobile>
       <nav>
         <ul>
-          <li onClick={() => buttonHandler(refSkills)}>Skills</li>
-          <li onClick={() => buttonHandler(refEducation)}>Education</li>
-          <li onClick={() => buttonHandler(refExperiences)}>
-            Work Experiences
+          <li onClick={() => buttonHandler(refSkills)}>{lang.header.skills}</li>
+          <li onClick={() => buttonHandler(refEducation)}>
+            {lang.header.education}
           </li>
-          <li onClick={() => buttonHandler(refProjects)}>My Projects</li>
-          <li onClick={() => buttonHandler(refContact)}>Contact me</li>
+          <li onClick={() => buttonHandler(refExperiences)}>
+            {lang.header.work}
+          </li>
+          <li onClick={() => buttonHandler(refProjects)}>
+            {lang.header.projects}
+          </li>
+          <li onClick={() => buttonHandler(refContact)}>
+            {lang.header.contact}
+          </li>
           <Footer>
             <ModeBlock />
             <LanguageBlock />
