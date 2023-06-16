@@ -204,7 +204,12 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
             <Button text={lang.cover.btn_1} />
           </div>
 
-          <Button text={lang.cover.btn_2} />
+          <a
+            href="document/Alexey_Sevastynov_Frontend_React_developer.pdf"
+            download
+          >
+            <Button text={lang.cover.btn_2} />
+          </a>
         </BlockBtns>
       </Col1>
 

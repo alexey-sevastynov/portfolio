@@ -58,13 +58,11 @@ const SkillsIcons: React.FC<SkillsIconsProps> = () => {
     e: React.MouseEvent<SVGSVGElement, MouseEvent>,
     id: string
   ) => {
-    console.log("handleMouseLeave");
     dispatch(setShowDream(true));
     dispatch(setNameSkill(id));
   };
 
   const handleMouseLeave = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-    console.log("handleMouseEnter");
     dispatch(setShowDream(false));
     dispatch(setNameSkill(""));
   };

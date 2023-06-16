@@ -89,6 +89,7 @@ const Logo = styled.h5`
   line-height: 50px;
 
   min-width: 400px;
+
   cursor: pointer;
 
   @media (max-width: 900px) {

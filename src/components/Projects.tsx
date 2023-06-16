@@ -38,7 +38,8 @@ const Flex = styled.div`
   }
 `;
 
-const ButtonBlock = styled.div`
+const ButtonBlock = styled.a`
+  display: block;
   margin-top: 32px;
   text-align: center;
 `;
@@ -87,7 +88,10 @@ const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
       <StyledProjects>
         <h2>{lang.projects.title}</h2>
         <Flex>{showProjects(currentLang)}</Flex>
-        <ButtonBlock>
+        <ButtonBlock
+          href="https://github.com/alexey-sevastynov/"
+          target="blank"
+        >
           <Button text={lang.projects.btn} />
         </ButtonBlock>
       </StyledProjects>
