@@ -19,10 +19,12 @@ import useScrollUp from "./hooks/useScrollUp";
 
 const UpScreen = styled.section`
   width: 50px;
-  position: sticky;
-  right: 0;
+  height: 60px;
+  position: fixed;
+  display: flex;
+
   bottom: 20px;
-  float: right;
+  right: 10px;
 
   & svg {
     cursor: pointer;
