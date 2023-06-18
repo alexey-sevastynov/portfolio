@@ -15,6 +15,7 @@ import { selectTranslations } from "../redux/slices/i18next";
 import Logotype from "./Logotype";
 
 const StyledHeader = styled(motion.div)`
+  padding: 0px 20px;
   position: sticky;
   top: ${(props) => (props.title === "down" ? "-80px" : "0px")};
   height: 80px;
@@ -101,6 +102,7 @@ const Logo = styled.h5`
 const MenuBlock = styled.div`
   position: absolute;
   width: 100%;
+  left: 0;
   top: 100px;
 `;
 

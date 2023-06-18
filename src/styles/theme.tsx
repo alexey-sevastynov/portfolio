@@ -25,7 +25,7 @@ const brigthTheme: ITheme = {
 const GlobalStyle = createGlobalStyle`
 body{
   
-    padding: 0px 10px 0px 10px;
+  padding: 0;
     background-color:   ${(props) =>
       // @ts-ignore
       props.suppressMultiMountWarning
@@ -34,6 +34,10 @@ body{
     max-width: 1440px;
     margin: 0 auto;
 };
+
+.wrapper{
+  padding: 0px 10px 0px 10px;
+}
 
 
 * {

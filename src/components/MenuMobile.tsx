@@ -9,14 +9,16 @@ import { selectTranslations } from "../redux/slices/i18next";
 const StyledMenuBobile = styled.div`
   position: sticky;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 450px;
   background-color: ${({ theme }) => theme.colors.background};
+  box-sizing: border-box;
 
   z-index: 2;
 
   & ul {
-    padding: 0;
+    padding-left: 10px;
   }
 
   & li {
