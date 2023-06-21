@@ -44,6 +44,7 @@ const UpScreen = styled.section`
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
+  ``;
   const scrollUp = useScrollUp();
   const refSkills = React.useRef(null);
   const refEducation = React.useRef(null);
