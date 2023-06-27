@@ -2,10 +2,22 @@ import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
-import { setShowLinkAnimation } from "../redux/slices/main";
+import {
+  fetchGetOneStar,
+  fetchGetOneView,
+  fetchProjects,
+  setActiveStar,
+  setShowLinkAnimation,
+  setTrueStar_1,
+  setTrueStar_2,
+  setTrueStar_3,
+  setTrueStar_4,
+  setTrueStar_5,
+} from "../redux/slices/main";
 
 import link from "../assets/image/link.png";
 import linkNight from "../assets/image/linkNight.png";
+import { useDispatch } from "react-redux";
 
 const StyledProjectsItem = styled.div`
   box-sizing: border-box;
@@ -95,9 +107,14 @@ const SiteIconBlock = styled.div`
 `;
 
 interface ProjectsItemProps {
-  id: number;
+  id?: number;
+  viewsCount: number;
+  likeCount: number;
+  _id?: string;
   title: string;
-  text: string;
+  text_ua: string;
+  text_en: string;
+  text_ru: string;
   languageProgram: string;
   link: string;
   handleMouseEnter: any;
@@ -108,20 +125,70 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
   (
     {
       title,
-      text,
+      text_ua,
+      text_en,
+      text_ru,
       languageProgram,
       link,
       handleMouseLeave,
       handleMouseEnter,
+      likeCount,
+      viewsCount,
       id,
+      _id,
     },
     ref: any
   ) => {
-    const { linkAnimationId, brigthTheme } = useAppSelector(
-      (props) => props.main
-    );
+    const dispatch = useDispatch();
+    const {
+      linkAnimationId,
+      brigthTheme,
+      projects,
+      star_1,
+      star_2,
+      star_3,
+      star_4,
+      star_5,
+    } = useAppSelector((props) => props.main);
+
+    const currentLang = useAppSelector((props) => props.i18n.lang);
+    const text = (lang: string) => {
+      if (lang === "ua") return text_ua;
+      if (lang === "en") return text_en;
+      if (lang === "ru") return text_ru;
+    };
 
     const linkGitHub = `https://github.com/alexey-sevastynov/${title}`;
+
+    const clickOneView = async (id: any) => {
+      //@ts-ignore
+      await dispatch(fetchGetOneView({ id }));
+      //@ts-ignore
+      dispatch(fetchProjects());
+    };
+
+    const clickStar = (_id: string, idInt: number) => {
+      console.log("star", _id, idInt);
+
+      //@ts-ignore
+      if (!star_1 && idInt === 0) dispatch(fetchGetOneStar({ _id }));
+      //@ts-ignore
+      if (!star_2 && idInt === 1) dispatch(fetchGetOneStar({ _id }));
+      //@ts-ignore
+      if (!star_3 && idInt === 2) dispatch(fetchGetOneStar({ _id }));
+      //@ts-ignore
+      if (!star_4 && idInt === 3) dispatch(fetchGetOneStar({ _id }));
+      //@ts-ignore
+      if (!star_5 && idInt === 4) dispatch(fetchGetOneStar({ _id }));
+
+      if (!star_1 && idInt === 0) dispatch(setTrueStar_1());
+      if (!star_2 && idInt === 1) dispatch(setTrueStar_2());
+      if (!star_3 && idInt === 2) dispatch(setTrueStar_3());
+      if (!star_4 && idInt === 3) dispatch(setTrueStar_4());
+      if (!star_5 && idInt === 4) dispatch(setTrueStar_5());
+      //@ts-ignore
+      dispatch(fetchProjects());
+    };
 
     return (
       <StyledProjectsItem
@@ -175,7 +242,7 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
               <p>{title}</p>
             </motion.a>
           </Header>
-          <h6>{text}</h6>
+          <h6>{text(currentLang)}</h6>
         </div>
 
         <Footer>
@@ -185,6 +252,9 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
           </LanguageBlock>
           <ViewsBlock>
             <svg
+              onClick={() =>
+                linkAnimationId === id ? clickStar(_id ? _id : "", id) : null
+              }
               width="19"
               height="18"
               viewBox="0 0 19 18"
@@ -193,10 +263,18 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
             >
               <path
                 d="M9.5 0L11.6329 6.56434H18.535L12.9511 10.6213L15.084 17.1857L9.5 13.1287L3.91604 17.1857L6.04892 10.6213L0.464963 6.56434H7.36712L9.5 0Z"
-                fill="#FFA800"
+                fill={
+                  (star_1 && id === 0) ||
+                  (star_2 && id === 1) ||
+                  (star_3 && id === 2) ||
+                  (star_4 && id === 3) ||
+                  (star_5 && id === 4)
+                    ? "#FFA800"
+                    : "#BEBEBE"
+                }
               />
             </svg>
-            <p>23</p>
+            <p>{likeCount}</p>
 
             <svg
               width="20"
@@ -218,10 +296,16 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                 fill="#BEBEBE"
               />
             </svg>
-            <p>3</p>
+            <p>{viewsCount}</p>
           </ViewsBlock>
           <SiteIconBlock>
-            <a href={link} target="blank">
+            <a
+              onClick={() =>
+                linkAnimationId === id ? clickOneView(_id) : null
+              }
+              href={link}
+              target="blank"
+            >
               {brigthTheme ? (
                 linkAnimationId === id ? (
                   <motion.img
@@ -276,3 +360,6 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
 export default ProjectsItem;
 
 export const MProjectsItem = motion(ProjectsItem);
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}

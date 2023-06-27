@@ -7,6 +7,7 @@ import Button from "./Button";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { selectTranslations } from "../redux/slices/i18next";
 import {
+  fetchProjects,
   setShowLinkAnimation,
   setShowLinkAnimationId,
 } from "../redux/slices/main";
@@ -54,7 +55,7 @@ const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
   const currentLang = useAppSelector((props) => props.i18n.lang);
   const lang = useAppSelector(selectTranslations);
 
-  const { linkAnimation } = useAppSelector((props) => props.main);
+  const { linkAnimation, projects } = useAppSelector((props) => props.main);
 
   const handleMouseEnter = (id: number) => {
     dispatch(setShowLinkAnimation(true));
@@ -66,28 +67,48 @@ const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
     dispatch(setShowLinkAnimationId(null));
   };
 
-  const showProjects = (currentLang: string) => {
-    if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
-      return projects[currentLang].map((item, id) => (
-        <MProjectsItem
-          key={id}
-          id={id}
-          handleMouseLeave={handleMouseLeave}
-          handleMouseEnter={() => handleMouseEnter(id)}
-          {...item}
-          variants={containerAnimation}
-          initial="hidden"
-          whileInView="visible"
-          custom={id + 1}
-        />
-      ));
-    }
-  };
+  // const showProjects = (currentLang: string) => {
+  //   if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
+  //     return projects[currentLang].map((item, id) => (
+  //       <MProjectsItem
+  //         key={id}
+  //         id={id}
+  //         handleMouseLeave={handleMouseLeave}
+  //         handleMouseEnter={() => handleMouseEnter(id)}
+  //         {...item}
+  //         variants={containerAnimation}
+  //         initial="hidden"
+  //         whileInView="visible"
+  //         custom={id + 1}
+  //       />
+  //     ));
+  //   }
+  // };
+
+  React.useEffect(() => {
+    dispatch(fetchProjects());
+  }, []);
+
   return (
     <div ref={refProjects}>
       <StyledProjects>
         <h2>{lang.projects.title}</h2>
-        <Flex>{showProjects(currentLang)}</Flex>
+        {/* <Flex>{showProjects(currentLang)}</Flex> */}
+        <Flex>
+          {projects.map((project, id) => (
+            <MProjectsItem
+              key={project.title}
+              id={id}
+              handleMouseLeave={handleMouseLeave}
+              handleMouseEnter={() => handleMouseEnter(id)}
+              {...project}
+              variants={containerAnimation}
+              initial="hidden"
+              whileInView="visible"
+              custom={id + 1}
+            />
+          ))}
+        </Flex>
         <ButtonBlock
           href="https://github.com/alexey-sevastynov/"
           target="blank"
