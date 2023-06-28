@@ -24,8 +24,6 @@ import styled from "styled-components";
 //   }
 // }
 
-// console.log(result);
-
 type AnimationMainProps = {};
 
 const AnimationMain: React.FC<AnimationMainProps> = () => {

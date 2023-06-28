@@ -22,8 +22,6 @@ const Education: React.FC<EducationProps> = ({ refEducation }) => {
   const currentLang = useAppSelector((props) => props.i18n.lang);
   const lang = useAppSelector(selectTranslations);
 
-  console.log(education.ua);
-
   const showEducations = (currentLang: string) => {
     if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
       return education[currentLang].map((item, id) => (

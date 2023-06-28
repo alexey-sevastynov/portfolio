@@ -18,7 +18,7 @@ export const fetchGetOneView = createAsyncThunk<
   FetchGetOneViewArgs
 >("oneView/fetchGetOneView", async (params) => {
   const { id } = params;
-  console.log(id, "_id");
+
   const { data } = await axios.get(
     `https://backend-portfolio-ten.vercel.app/items/${id}`
   );
@@ -30,7 +30,7 @@ export const fetchGetOneStar = createAsyncThunk<
   FetchGetOneViewArgs
 >("oneStar/fetchGetOneStar", async (params) => {
   const { id } = params;
-  console.log(id, "_id");
+
   const { data } = await axios.get(
     `https://backend-portfolio-ten.vercel.app/items/star/${id}`
   );
@@ -127,10 +127,10 @@ const mainSlice = createSlice({
       state.star_3 = true;
     },
     setTrueStar_4: (state) => {
-      state.star_3 = true;
+      state.star_4 = true;
     },
     setTrueStar_5: (state) => {
-      state.star_3 = true;
+      state.star_5 = true;
     },
 
     setActiveStar: (state) => {

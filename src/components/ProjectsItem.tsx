@@ -15,7 +15,7 @@ import {
   setTrueStar_5,
 } from "../redux/slices/main";
 
-import link from "../assets/image/link.png";
+import linkBright from "../assets/image/link.png";
 import linkNight from "../assets/image/linkNight.png";
 import { useDispatch } from "react-redux";
 
@@ -167,25 +167,37 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
       dispatch(fetchProjects());
     };
 
-    const clickStar = (_id: string, idInt: number) => {
-      console.log("star", _id, idInt);
+    const clickStar = async (id: string, idInt: number) => {
+      if (!star_1 && idInt === 0) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_1());
+      }
 
-      //@ts-ignore
-      if (!star_1 && idInt === 0) dispatch(fetchGetOneStar({ _id }));
-      //@ts-ignore
-      if (!star_2 && idInt === 1) dispatch(fetchGetOneStar({ _id }));
-      //@ts-ignore
-      if (!star_3 && idInt === 2) dispatch(fetchGetOneStar({ _id }));
-      //@ts-ignore
-      if (!star_4 && idInt === 3) dispatch(fetchGetOneStar({ _id }));
-      //@ts-ignore
-      if (!star_5 && idInt === 4) dispatch(fetchGetOneStar({ _id }));
+      if (!star_2 && idInt === 1) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_2());
+      }
 
-      if (!star_1 && idInt === 0) dispatch(setTrueStar_1());
-      if (!star_2 && idInt === 1) dispatch(setTrueStar_2());
-      if (!star_3 && idInt === 2) dispatch(setTrueStar_3());
-      if (!star_4 && idInt === 3) dispatch(setTrueStar_4());
-      if (!star_5 && idInt === 4) dispatch(setTrueStar_5());
+      if (!star_3 && idInt === 2) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_3());
+      }
+
+      if (!star_4 && idInt === 3) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_4());
+      }
+
+      if (!star_5 && idInt === 4) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_5());
+      }
+
       //@ts-ignore
       dispatch(fetchProjects());
     };
@@ -253,7 +265,8 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
           <ViewsBlock>
             <svg
               onClick={() =>
-                linkAnimationId === id ? clickStar(_id ? _id : "", id) : null
+                //@ts-ignore
+                linkAnimationId === id ? clickStar(_id, id) : null
               }
               width="19"
               height="18"
@@ -320,13 +333,13 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                       delay: 2,
                       damping: 0.2,
                     }}
-                    src={link}
+                    src={linkBright}
                     alt="link"
                     width={25}
                     height={25}
                   />
                 ) : (
-                  <img src={link} alt="link" width={25} height={25} />
+                  <img src={linkBright} alt="link" width={25} height={25} />
                 )
               ) : linkAnimationId === id ? (
                 <motion.img

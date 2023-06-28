@@ -127,6 +127,6 @@ const containerAnimation = {
   visible: (custom: any) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: custom * 0.4 },
+    transition: { delay: custom * 0.2 },
   }),
 };
