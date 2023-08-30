@@ -1,63 +1,29 @@
 import React from "react";
 
-import styled from "styled-components";
-import { Theme } from "./styles/theme";
-import Header from "./components/Header";
-import Cover from "./components/Cover";
-import Skills from "./components/Skills";
-import Education from "./components/Education";
-import Experiences from "./components/Experiences";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import MenuMobile from "./components/MenuMobile";
+import * as Style from "./styles";
+import { Theme } from "../styles/theme";
 
-import useScrollUp from "./hooks/useScrollUp";
+import Header from "../components/Header/Header";
+import Cover from "../components/Cover";
+import Skills from "../components/Skills";
+import Education from "../components/Education";
+import Experiences from "../components/Experiences";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 
-// const Background = styled.div`
-//   background-color: ${({ theme }) => theme.colors.background};
-// `;
-
-const UpScreen = styled.section`
-  width: 50px;
-  height: 60px;
-  position: fixed;
-  display: flex;
-
-  bottom: 20px;
-  right: 10px;
-
-  & svg {
-    cursor: pointer;
-    &:hover {
-      & rect {
-        &:first-child {
-          fill: black;
-        }
-      }
-      & circle {
-        fill: black;
-      }
-    }
-  }
-`;
+import useScrollUp from "../hooks/useScrollUp";
+import { showUpWindow } from "../helpers/showUpWindow";
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   const scrollUp = useScrollUp();
+
   const refSkills = React.useRef(null);
   const refEducation = React.useRef(null);
   const refExperiences = React.useRef(null);
   const refProjects = React.useRef(null);
   const refContact = React.useRef(null);
-
-  const showUpWindow = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <Theme>
@@ -69,7 +35,6 @@ const App: React.FC<AppProps> = () => {
         refContact={refContact}
       />
       <div className="wrapper">
-        {/* <MenuMobile /> */}
         <Cover refContact={refContact} />
         <Skills refSkills={refSkills} />
         <Education refEducation={refEducation} />
@@ -77,7 +42,7 @@ const App: React.FC<AppProps> = () => {
         <Projects refProjects={refProjects} />
         <Contact refContact={refContact} />
         {!scrollUp && (
-          <UpScreen>
+          <Style.UpScreen>
             <svg
               onClick={() => showUpWindow()}
               width="50"
@@ -94,7 +59,7 @@ const App: React.FC<AppProps> = () => {
               <rect x="21" y="37" width="12" height="5" rx="1" fill="white" />
               <circle cx="31" cy="39" r="1" fill="#568ED5" />
             </svg>
-          </UpScreen>
+          </Style.UpScreen>
         )}
       </div>
     </Theme>
