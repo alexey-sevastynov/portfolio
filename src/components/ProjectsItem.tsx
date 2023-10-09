@@ -13,6 +13,7 @@ import {
   setTrueStar_3,
   setTrueStar_4,
   setTrueStar_5,
+  setTrueStar_6,
 } from "../redux/slices/main";
 
 import linkBright from "../assets/image/link.png";
@@ -149,6 +150,7 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
       star_3,
       star_4,
       star_5,
+      star_6,
     } = useAppSelector((props) => props.main);
 
     const currentLang = useAppSelector((props) => props.i18n.lang);
@@ -196,6 +198,11 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
         //@ts-ignore
         await dispatch(fetchGetOneStar({ id }));
         dispatch(setTrueStar_5());
+      }
+      if (!star_6 && idInt === 5) {
+        //@ts-ignore
+        await dispatch(fetchGetOneStar({ id }));
+        dispatch(setTrueStar_6());
       }
 
       //@ts-ignore
@@ -264,10 +271,10 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
           </LanguageBlock>
           <ViewsBlock>
             <svg
-              onClick={() =>
+              onClick={() => {
                 //@ts-ignore
-                linkAnimationId === id ? clickStar(_id, id) : null
-              }
+                return linkAnimationId === id ? clickStar(_id, id) : null;
+              }}
               width="19"
               height="18"
               viewBox="0 0 19 18"
@@ -281,7 +288,8 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
                   (star_2 && id === 1) ||
                   (star_3 && id === 2) ||
                   (star_4 && id === 3) ||
-                  (star_5 && id === 4)
+                  (star_5 && id === 4) ||
+                  (star_6 && id === 5)
                     ? "#FFA800"
                     : "#BEBEBE"
                 }

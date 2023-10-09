@@ -69,6 +69,7 @@ type InitialStateTypes = {
   star_3: boolean;
   star_4: boolean;
   star_5: boolean;
+  star_6: boolean;
 };
 
 const initialState: InitialStateTypes = {
@@ -87,6 +88,7 @@ const initialState: InitialStateTypes = {
   star_3: false,
   star_4: false,
   star_5: false,
+  star_6: false,
 };
 
 const mainSlice = createSlice({
@@ -131,6 +133,9 @@ const mainSlice = createSlice({
     },
     setTrueStar_5: (state) => {
       state.star_5 = true;
+    },
+    setTrueStar_6: (state) => {
+      state.star_6 = true;
     },
 
     setActiveStar: (state) => {
@@ -194,6 +199,7 @@ export const {
   setTrueStar_3,
   setTrueStar_4,
   setTrueStar_5,
+  setTrueStar_6,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;
