@@ -38,6 +38,10 @@ const StyledProjectsItem = styled.div`
     background-color: ${({ theme }) => theme.colors.backgroundTwo};
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.77);
   }
+
+  @media (max-width: 950px) {
+    height: 300px;
+  }
 `;
 
 const Header = styled.div`
