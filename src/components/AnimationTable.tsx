@@ -3,18 +3,7 @@ import styled from "styled-components";
 import { useAppSelector } from "../redux/hook";
 import { motion } from "framer-motion";
 
-const StyledAnimationTable = styled.svg`
-  & svg {
-  }
-`;
-
-const TitleNameSkill = styled.div`
-  position: absolute;
-  font-size: 20px;
-  font-weight: 700;
-  bottom: 400px;
-  right: 240px;
-`;
+const StyledAnimationTable = styled.svg``;
 
 type AnimationTableProps = {};
 

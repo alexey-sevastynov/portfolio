@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { projects } from "../../assets/projects";
 
 export const fetchProjects = createAsyncThunk<ProjectsTypes[]>(
   "projects/fetchProjects",

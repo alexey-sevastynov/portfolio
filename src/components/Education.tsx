@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import EducationItem, { MEducationItem } from "./EducationItem";
+import { MEducationItem } from "./EducationItem";
 import { education } from "../assets/education";
-import { motion } from "framer-motion";
+
 import { useAppSelector } from "../redux/hook";
 import { selectTranslations } from "../redux/slices/i18next";
 

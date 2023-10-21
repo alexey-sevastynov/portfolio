@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import ProjectsItem, { MProjectsItem } from "./ProjectsItem";
-import { projects } from "../assets/projects";
+import { MProjectsItem } from "./ProjectsItem";
+
 import Button from "./Button";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { selectTranslations } from "../redux/slices/i18next";
@@ -52,10 +52,9 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ refProjects }) => {
   const dispatch = useAppDispatch();
 
-  const currentLang = useAppSelector((props) => props.i18n.lang);
   const lang = useAppSelector(selectTranslations);
 
-  const { linkAnimation, projects } = useAppSelector((props) => props.main);
+  const { projects } = useAppSelector((props) => props.main);
 
   const handleMouseEnter = (id: number) => {
     dispatch(setShowLinkAnimation(true));

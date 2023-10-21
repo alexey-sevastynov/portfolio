@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ExperiencesItem, { MExperiencesItem } from "./ExperiencesItem";
+import { MExperiencesItem } from "./ExperiencesItem";
 import { experiences } from "../assets/experiences";
 import { useAppSelector } from "../redux/hook";
 import { selectTranslations } from "../redux/slices/i18next";

@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { useAppSelector } from "../redux/hook";
 import {
   fetchGetOneStar,
   fetchGetOneView,
   fetchProjects,
-  setActiveStar,
-  setShowLinkAnimation,
   setTrueStar_1,
   setTrueStar_2,
   setTrueStar_3,
@@ -148,7 +146,7 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
     const {
       linkAnimationId,
       brigthTheme,
-      projects,
+
       star_1,
       star_2,
       star_3,
@@ -385,6 +383,3 @@ const ProjectsItem: React.FC<ProjectsItemProps> = React.forwardRef(
 export default ProjectsItem;
 
 export const MProjectsItem = motion(ProjectsItem);
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}

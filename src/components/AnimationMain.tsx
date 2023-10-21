@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React from "react";
-import styled from "styled-components";
 
 // function getMatrixForRotation(deg: number, cx: number, cy: number) {
 //   const ca = Math.cos((deg * Math.PI) / 180);
