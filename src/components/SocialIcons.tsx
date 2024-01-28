@@ -106,7 +106,7 @@ const SocialIcons: React.FC<SocialIconsProps> = () => {
         </svg>
       </a>
       <a
-        href="https://www.linkedin.com/in/alexey-alexey-662041274/"
+        href="https://www.linkedin.com/in/alexey-sevastynov-662041274/"
         target="blank"
       >
         <svg
