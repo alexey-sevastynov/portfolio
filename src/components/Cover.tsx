@@ -1,12 +1,11 @@
-import React from "react";
 import styled from "styled-components";
-import SocialIcons from "./SocialIcons";
-import Button from "./Button";
-import AnimationMain from "./AnimationMain";
 import { motion } from "framer-motion";
-import { animateCoverCol1, animateCoverCol2 } from "../animateMotion/main";
-import { selectTranslations } from "../redux/slices/i18next";
-import { useAppSelector } from "../redux/hook";
+import SocialIcons from "@/components/SocialIcons";
+import Button from "@/components/Button";
+import AnimationMain from "@/components/AnimationMain";
+import { animateCoverCol1, animateCoverCol2 } from "@/animateMotion/main";
+import { selectTranslations } from "@/redux/slices/i18next";
+import { useAppSelector } from "@/redux/hook";
 
 const StyledCover = styled.div`
     display: flex;
@@ -126,11 +125,11 @@ const BlockBtns = styled.div`
     }
 `;
 
-type CoverProps = {
+interface CoverProps {
     refContact: any;
-};
+}
 
-const Cover: React.FC<CoverProps> = ({ refContact }) => {
+function Cover({ refContact }: CoverProps) {
     const lang = useAppSelector(selectTranslations);
 
     const buttonHandler = (ref: any) => {
@@ -147,13 +146,6 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
                         //@ts-ignore
                         animate={{
                             rotate: [0, 15, -15, 15, 0, 0, 0, 0, 0, 0, 0, 0],
-                            // transform: [
-                            //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
-                            //   "matrix(1,-0.34,0.34,1,0,0)",
-                            //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
-                            //   "matrix(1,0.34,-0.34,1,0,0)",
-                            //   "matrix(1.00,-0.00,0.00,1.00,0,0)",
-                            // ],
                             transformOrigin: "50% bottom",
                         }}
                         transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}
@@ -225,6 +217,6 @@ const Cover: React.FC<CoverProps> = ({ refContact }) => {
             </Col2>
         </StyledCover>
     );
-};
+}
 
 export default Cover;

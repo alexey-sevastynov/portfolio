@@ -1,36 +1,34 @@
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { ITheme } from "../interfaces/styled";
-import { useAppSelector } from "../redux/hook";
+import { ITheme } from "@/interfaces/styled";
+import { useAppSelector } from "@/redux/hook";
+import { ReactNode } from "react";
 
 const theme: ITheme = {
-  colors: {
-    text: "white",
-    background: "#26365F",
-    backgroundTwo: "#568ED5",
-    border: "white",
-    lightGrey: "#BEBEBE",
-  },
+    colors: {
+        text: "white",
+        background: "#26365F",
+        backgroundTwo: "#568ED5",
+        border: "white",
+        lightGrey: "#BEBEBE",
+    },
 };
 
-const brigthTheme: ITheme = {
-  colors: {
-    text: "black",
-    background: "white",
-    backgroundTwo: "#568ED5",
-    border: "black",
-    lightGrey: "#787878",
-  },
+const brightTheme: ITheme = {
+    colors: {
+        text: "black",
+        background: "white",
+        backgroundTwo: "#568ED5",
+        border: "black",
+        lightGrey: "#787878",
+    },
 };
 
 const GlobalStyle = createGlobalStyle`
 body{
-  
-  padding: 0;
+    padding: 0;
     background-color:   ${(props) =>
-      // @ts-ignore
-      props.suppressMultiMountWarning
-        ? brigthTheme.colors.background
-        : theme.colors.background};
+        // @ts-ignore
+        props.suppressMultiMountWarning ? brightTheme.colors.background : theme.colors.background};
     max-width: 1440px;
     margin: 0 auto;
 };
@@ -48,10 +46,8 @@ body{
     font-family: 'Jura', sans-serif;
     font-weight: 300;
     color:  ${(props) =>
-      // @ts-ignore
-      props.suppressMultiMountWarning
-        ? brigthTheme.colors.text
-        : theme.colors.text};
+        // @ts-ignore
+        props.suppressMultiMountWarning ? brightTheme.colors.text : theme.colors.text};
 
 /* forbid select text */
     -webkit-touch-callout: none; /* iOS Safari */
@@ -154,10 +150,8 @@ button {
    width: 200px;
   height: 50px;
   background-color:  ${(props) =>
-    // @ts-ignore
-    props.suppressMultiMountWarning
-      ? brigthTheme.colors.backgroundTwo
-      : theme.colors.backgroundTwo};
+      // @ts-ignore
+      props.suppressMultiMountWarning ? brightTheme.colors.backgroundTwo : theme.colors.backgroundTwo};
   border-radius: 10px;
   font-weight: 700;
   font-size: 20px;
@@ -167,10 +161,8 @@ button {
 
   &:hover {
     border: 1px solid  ${(props) =>
-      // @ts-ignore
-      props.suppressMultiMountWarning
-        ? theme.colors.backgroundTwo
-        : brigthTheme.colors.backgroundTwo};
+        // @ts-ignore
+        props.suppressMultiMountWarning ? theme.colors.backgroundTwo : brightTheme.colors.backgroundTwo};
     background-color: unset;
 
     transform: translateY(-3px);
@@ -184,17 +176,16 @@ button {
 `;
 
 interface ThemeProps {
-  children: any;
+    children: ReactNode;
 }
 
-export const Theme: React.FC<ThemeProps> = ({ children }) => {
-  const brightTheme = useAppSelector(({ main }) => main.brigthTheme);
+export function Theme({ children }: ThemeProps) {
+    const brightTheme = useAppSelector(({ main }) => main.brigthTheme);
 
-  return (
-    <ThemeProvider theme={brightTheme ? brigthTheme : theme}>
-      {children}
-
-      <GlobalStyle suppressMultiMountWarning={brightTheme} />
-    </ThemeProvider>
-  );
-};
+    return (
+        <ThemeProvider theme={brightTheme ? brightTheme : theme}>
+            {children}
+            <GlobalStyle suppressMultiMountWarning={brightTheme} />
+        </ThemeProvider>
+    );
+}
