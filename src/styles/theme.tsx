@@ -13,7 +13,7 @@ const theme: ITheme = {
     },
 };
 
-const brightTheme: ITheme = {
+const brigthTheme: ITheme = {
     colors: {
         text: "black",
         background: "white",
@@ -28,7 +28,7 @@ body{
     padding: 0;
     background-color:   ${(props) =>
         // @ts-ignore
-        props.suppressMultiMountWarning ? brightTheme.colors.background : theme.colors.background};
+        props.suppressMultiMountWarning ? brigthTheme.colors.background : theme.colors.background};
     max-width: 1440px;
     margin: 0 auto;
 };
@@ -47,7 +47,7 @@ body{
     font-weight: 300;
     color:  ${(props) =>
         // @ts-ignore
-        props.suppressMultiMountWarning ? brightTheme.colors.text : theme.colors.text};
+        props.suppressMultiMountWarning ? brigthTheme.colors.text : theme.colors.text};
 
 /* forbid select text */
     -webkit-touch-callout: none; /* iOS Safari */
@@ -151,7 +151,7 @@ button {
   height: 50px;
   background-color:  ${(props) =>
       // @ts-ignore
-      props.suppressMultiMountWarning ? brightTheme.colors.backgroundTwo : theme.colors.backgroundTwo};
+      props.suppressMultiMountWarning ? brigthTheme.colors.backgroundTwo : theme.colors.backgroundTwo};
   border-radius: 10px;
   font-weight: 700;
   font-size: 20px;
@@ -162,7 +162,7 @@ button {
   &:hover {
     border: 1px solid  ${(props) =>
         // @ts-ignore
-        props.suppressMultiMountWarning ? theme.colors.backgroundTwo : brightTheme.colors.backgroundTwo};
+        props.suppressMultiMountWarning ? theme.colors.backgroundTwo : brigthTheme.colors.backgroundTwo};
     background-color: unset;
 
     transform: translateY(-3px);
@@ -183,7 +183,7 @@ export function Theme({ children }: ThemeProps) {
     const brightTheme = useAppSelector(({ main }) => main.brigthTheme);
 
     return (
-        <ThemeProvider theme={brightTheme ? brightTheme : theme}>
+        <ThemeProvider theme={brightTheme ? brigthTheme : theme}>
             {children}
             <GlobalStyle suppressMultiMountWarning={brightTheme} />
         </ThemeProvider>

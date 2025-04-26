@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const StyledExperiencesItem = styled.div`
     height: 540px;
-    max-width: 436px;
+    min-width: 436px;
+    width: 436px;
     border: 1px solid ${({ theme }) => theme.colors.lightGrey};
     border-radius: 25px;
 
@@ -40,6 +41,9 @@ const StyledExperiencesItem = styled.div`
     }
 
     @media (max-width: 600px) {
+        width: 100%;
+        max-width: 436px;
+        min-width: unset;
         height: 400px;
     }
 `;
@@ -80,6 +84,10 @@ const Icon = styled.div`
     }
 `;
 
+const Content = styled.div`
+    padding: 0px 10px;
+`;
+
 interface ExperiencesItemProps {
     title: string;
     image: any;
@@ -98,9 +106,11 @@ const ExperiencesItem: React.FC<ExperiencesItemProps> = React.forwardRef(
                     <Icon>{image}</Icon>
                 </HederBlock>
 
-                <span>{subTitle}</span>
-                <p>{date}</p>
-                <p>{text}</p>
+                <Content>
+                    <span>{subTitle}</span>
+                    <p>{date}</p>
+                    <p>{text}</p>
+                </Content>
             </StyledExperiencesItem>
         );
     },

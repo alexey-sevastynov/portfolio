@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MExperiencesItem } from "@/components/ExperiencesItem";
-import { experiences } from "@/assets/experiences";
+import { localizedExperiences } from "@/assets/experiences/localized-experiences";
 import { useAppSelector } from "@/redux/hook";
 import { selectTranslations } from "@/redux/slices/i18next";
 
@@ -20,9 +20,14 @@ const StyledExperiences = styled.div`
 `;
 
 const Flex = styled.div`
+    padding-bottom: 40px;
     display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-y: scroll;
 
     @media (max-width: 1050px) {
+        overflow-y: unset;
         flex-direction: column;
         row-gap: 10px;
         align-items: center;
@@ -39,7 +44,7 @@ const Experiences: React.FC<ExperiencesProps> = ({ refExperiences }) => {
 
     const showExperiences = (currentLang: string) => {
         if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
-            return experiences[currentLang].map((item, id) => (
+            return localizedExperiences[currentLang].map((item, id) => (
                 <MExperiencesItem
                     key={id}
                     {...item}
