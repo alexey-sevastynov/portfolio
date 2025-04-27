@@ -1,7 +1,7 @@
 import { LegacyRef } from "react";
 import styled from "styled-components";
 import { MEducationItem } from "@/components/EducationItem";
-import { education } from "@/assets/education";
+import { localizedEducations } from "@/assets/educations/localized-educations";
 import { useAppSelector } from "@/redux/hook";
 import { selectTranslations } from "@/redux/slices/i18next";
 
@@ -23,7 +23,7 @@ function Education({ refEducation }: EducationProps) {
 
     const showEducations = (currentLang: string) => {
         if (currentLang === "en" || currentLang === "ua" || currentLang === "ru") {
-            return education[currentLang].map((item, id) => (
+            return localizedEducations[currentLang].map((item, id) => (
                 <MEducationItem
                     key={item.image}
                     image={item.image}
